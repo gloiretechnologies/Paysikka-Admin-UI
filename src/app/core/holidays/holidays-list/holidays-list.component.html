@@ -1,0 +1,117 @@
+<body>
+    
+<section>
+    <div class="row p-0 m-0 mt-3">
+        <div class="col-md-3">
+            <button (click)="addVisible = !addVisible" class="btn redButton"><span *ngIf="!addVisible">Add
+                    Holiday</span><span *ngIf="addVisible">Add Close</span></button>
+        </div>
+    </div>
+</section>
+<section>
+    <!-- <div class="text-center  mt-3">
+        <h4>Holidays List</h4>
+    </div> -->
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12">
+
+                <table class="styled-table text-center">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Holiday Name</th>
+                            <th>Holiday Date</th>
+                            <th>Day</th>
+                            <!-- <th>Date</th> -->
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr [formGroup]="holidayForm" (ngSubmit)="onSubmit()" *ngIf="addVisible">
+                            <td><button class="btn redButton" (click)="addVisible =!addVisible"><i
+                                        class="fa-solid fa-xmark"></i></button></td>
+                            <td>
+                                <input type="text" formControlName="holidayname" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f['holidayname'].errors }" />
+                                <div *ngIf="submitted && f['holidayname'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['holidayname'].errors['required']">Holiday Name is required</div>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="date" formControlName="holidaydate" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f['holidaydate'].errors }" />
+                                <div *ngIf="submitted && f['holidaydate'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['holidaydate'].errors['required']">Holiday Date is required</div>
+
+                                </div>
+                            </td>
+                            <td></td>
+                            <td><button class="btn bg-theme text-light" (click)="onSubmit()"><i
+                                        class="fa-solid fa-plus"></i></button>
+                            </td>
+                        </tr>
+                        <ng-container [formGroup]="updateholidayForm">
+                            <tr (click)="removeEdit(data.holidayid)"
+                                *ngFor="let data of holidayData | paginate: { itemsPerPage: 10,currentPage: q };let i=index">
+                                <td>{{i+1}}</td>
+                                <td class="namefield" (dblclick)="editExperiment(data.holidayid)" >
+                                    <span *ngIf="data.holidayid!==clickedID"><input class="form-control list-input" value="{{data.holidayname}}" type="text" disabled></span>
+                                    <span *ngIf="data.holidayid==clickedID">
+                                        <input (keypress)="editSubmit($event)" class="form-control" formControlName="holidayname" type="text">
+                                    </span>
+                                </td>
+                                <td class="datefield" (dblclick)="editExperiment(data.holidayid)">
+                                    <span *ngIf="data.holidayid!==clickedID"><input class="form-control list-input" value="{{data.holidaydate | date:'dd-MM-yyyy'}}" type="text" disabled></span>
+                                    <span *ngIf="data.holidayid==clickedID">
+                                        <input (keypress)="editSubmit($event)" class="form-control" formControlName="holidaydate"
+                                            placeholder="{{data.holidaydate}}" type="date">
+                                    </span>
+                                </td>
+                                <td>{{data.day}}</td>
+                                <!-- <td>{{data.date |date}}</td> -->
+                                <td>
+                                    <span (click)="deleteHolidayList(data.holidayid)"><i
+                                            class="fa-solid fa-trash text-danger"></i></span>
+                                    &nbsp;&nbsp;
+                                         <!-- <span *ngIf="editBtn && data.holidayid==clickedID" (click)="editSubmit()"><i
+                                                    class="fa-solid fa-pen-to-square"></i></span> -->
+                                    <!-- <span routerLink="/holidays/update-holiday/{{data.holidayid}}"><i
+                class="fa-solid fa-pen-to-square"></i></span> -->
+                                </td>
+                            </tr>
+                        </ng-container>
+                        
+
+                    </tbody>
+                    
+                </table>
+                <pagination-controls (pageChange)="q = $event"  *ngIf="!serverIssue"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>
+<app-server-issue *ngIf="serverIssue"></app-server-issue>
+
+<!-- <div class="col-md-8" style="margin: 100px;" id="htmlData">
+    <table class="table table-bordered">
+        <tr class="table-primary">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+        <tr *ngFor="let user of USERS">
+            <th>{{user.id}}</th>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+        </tr>
+    </table>
+</div>
+<div class="col-md-4 text-right">
+    <button class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+</div> -->
+
+</body>
+

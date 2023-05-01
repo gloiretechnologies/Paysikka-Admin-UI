@@ -1,0 +1,186 @@
+<!-- Table-2 -->
+
+<div class="form-group row">
+
+    <div class="col-lg-6">
+        <form [formGroup]="frmDateform" (ngSubmit)="filtreData()">
+            <label for="fromdate" style="display: inline;">From : &nbsp;</label>
+            <input type="date" class="date" formControlName="fromdate" class="form-control startDate">&nbsp;
+            <label for="todate">To : </label>
+            <input type="date" class="date" formControlName="todate" class="form-control startDate">
+            &nbsp; &nbsp;<button type="submit" class="btn btn-sm filterButton" style="display: inline;">Apply
+                Filter</button>
+        </form>
+    </div>
+
+    <div class="col-lg-6">
+        <button type="button" (click)="resetFilter()" class="btn btn-sm filterButton" style="display: inline;">Reset
+            Filter</button>
+        &nbsp; &nbsp; <label for="ser">search:</label>&nbsp;
+        <input type="text" class="form-control search-field " placeholder="What do you want search here....."
+            [(ngModel)]="searchText" style="display: inline;width: 64%;height: 30px;">
+
+    </div>
+
+</div>
+<section>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12 w-100 my-5">
+                <!---------------------MyTable---------------------->
+                <table class="styled-table">
+                    <thead>
+                        <tr style="margin: 0;padding: 0;">
+                            <th>Sr.No</th>
+                            <th>Emp ID</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Desigination</th>
+                            <td>Apply Date</td>
+                            <th>In-Time</th>
+                            <th>Out-Time</th>
+                            <th>Update Status</th>
+                            <th>Note</th>
+                            <!-- <th>Action</th> -->
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let data of requestData?.reverse() | paginate
+                    : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                      } | search:searchText ;let i = index">
+                        <tr style="margin: 0;padding: 0;">
+                            <td>{{i+1}}</td>
+                            <td>{{data.employee_id}}</td>
+                            <td>{{data.employee_name}}</td>
+                            <td>{{data.department}}</td>
+                            <td>{{data.jobrole}}</td>
+                            <td>{{data.createdAt | date}}</td>
+                            <!-- <td>{{data.leavetype}}</td> -->
+                            <td><a class="inTime">{{data.logintime}}</a></td>
+                            <td><a class="outTime">{{data.logouttime}}</a> </td>
+                            <td><select name="" [ngClass]="updateColor(data.status)" id="{{data.logindate}}"
+                                    (change)="updateStatus($event)">
+                                    <option value="{{data.status}}" selected>{{data.status}}</option>
+                                    <option
+                                        value='{"employee_id":{{data.employee_id}},"logindate":"{{data.logindate}}","value":"Approved"}'
+                                        *ngIf="data.status !== 'Approved'">Approved</option>
+                                    <option
+                                        value='{"employee_id":{{data.employee_id}},"logindate":"{{data.logindate}}","value":"Rejected"}'
+                                        *ngIf="data.status !== 'Rejected'">Rejected</option>
+                                </select> </td>
+                            <td>{{data.note}}</td>
+                            <!-- <td><span class="view-more"
+                                routerLink="/attendance/leaves-emp-details/{{data.employee_id}}"><i
+                                        class="fa-solid fa-eye"></i> View More</span> 
+                            </td> -->
+
+                            <!-- <td><button type="button" class="btn  btn-sm regularize" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" >
+                                    <i class="fa-solid fa-pen-to-square"></i> Regularize
+                                </button></td> -->
+
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="noData == true" class="text-center mt-5">
+                    <span class="text-center text-danger">No Data Found</span>
+                </div>
+                <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)"
+                    *ngIf="noData == false">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">#Regularize</h5>
+                <button type="button" class="btn-close btn-light" style="background-color:#fff" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body container">
+                <form [formGroup]="regularizeForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="exampleInputEmail1" class="form-label"> <b>Presenty</b></label>
+                            <input type="hidden" formControlName="empid" class="form-control">
+                            <select class="form-select" formControlName="presenty" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f['presenty'].errors }">
+                                <option value="">Choose Status</option>
+                                <option value="true">Present</option>
+                                <option value="false">Absent</option>
+
+                            </select>
+                            <div *ngIf="f['presenty'].errors" class="invalid-feedback">
+                                <div *ngIf="f['presenty'].errors['required']">*Presenty required</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="exampleInputEmail1" class="form-label"> <b>Date</b></label>
+                            <input type="date" class="form-control" formControlName="date"
+                                [ngClass]="{'is-invalid':submitted && f['date'].errors}" placeholder="Enter Date"
+                                id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <div *ngIf="f['date'].errors" class="invalid-feedback">
+                                <div *ngIf="f['date'].errors['required']">*Date Required</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row inout">
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="exampleInputEmail1" class="form-label"><b>In-Time</b></label>
+                            <input type="text" class="form-control" formControlName="intime" placeholder="Enter In-Time"
+                                id="exampleInputEmail1" aria-describedby="emailHelp"
+                                [ngClass]="{'is-invalid':submitted && f['intime'].errors} ">
+                            <div *ngIf="f['intime'].errors" class="invalid-feedback">
+                                <div *ngIf="f['intime'].errors['required']">*Intime Required</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="exampleInputPassword1" class="form-label"> <b>Out-Time</b></label>
+                            <input type="text" class="form-control" formControlName="outtime"
+                                placeholder="Enter Out-Time" id="exampleInputPassword1"
+                                [ngClass]="{'is-invalid':submitted && f['outtime'].errors}">
+                            <div *ngIf="f['outtime'].errors" class="invalid-feedback">
+                                <div *ngIf="f['outtime'].errors['required']">*Outtime required</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <label for="exampleInputPassword1" class="form-label"> <b>Note</b></label>
+                            <textarea name="" id="" cols="10" placeholder="Give some notes...." rows="4" type="text"
+                                class="form-control" formControlName="note" id="exampleInputPassword1"
+                                [ngClass]="{'is-invalid':submitted && f['note'].errors}"></textarea>
+                            <div *ngIf="f['note'].errors" class="invalid-feedback">
+                                <div *ngIf="f['note'].errors['required']">*Note required</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal"
+                            (click)="reset()">Cancel</button>
+                        <button type="submit" class="btn btn-outline-success btn-sm">Save</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

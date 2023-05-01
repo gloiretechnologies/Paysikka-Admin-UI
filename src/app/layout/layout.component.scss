@@ -1,0 +1,26 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .mat-drawer {
+   width: 270px;
+  
+  }
+  .mat-drawer-container {
+    height: 100%;
+  }
+  
+  .mat-drawer {
+    background:#41a548;
+  }
+  .mat-drawer-content{
+    background-color: #fff;
+    
+  }
+  ::ng-deep .top-nav{
+    position: sticky ;
+    z-index: 999;
+  
+  }

@@ -1,0 +1,120 @@
+<!-- <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>postions</th>
+        <th>job Description</th>
+        <th>email</th>
+        <th>status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of allhiringdata">
+        <td>{{data._id}}</td>
+        <td>{{data.title}}</td>
+        <td>{{data.positions}}</td>
+        <td>{{data.jobdescription}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.status}}</td>
+      </tr>
+    </tbody>
+  </table> -->
+  <!-- <section>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12" *ngFor="let data of allhiringdata">
+                <div class="card shadow  p-4 mt-3">
+                    <div class="row title-block"> 
+                        <div class="col-md-10">
+                            <div class="">
+                                <span class="title text-light" >{{data.title}}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="icons text-center">
+                                <span class="edit" routerLink="/hiring/edit-job-post/{{data.uniqueid}}"><i class="fa-solid fa-pen-to-square"></i></span>
+                                <span class="delete"><i class="fa-solid fa-trash"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-md-4">
+                        <div class="py-2">
+                            <label class="py-1">Positions</label>
+                            <span type="text"   class="form-control">{{data.positions}}</span>
+                        </div>
+                       </div>
+                       <div class="col-md-4">
+                        <div class="py-2">
+                            <label class="py-1">Email</label>
+                            <span type="text"   class="form-control">{{data.email}}</span>
+                        </div>
+                       </div>
+                       <div class="col-md-4">
+                        <div class="py-2">
+                            <label class="py-1">Status</label>
+                            <span type="text"   class="form-control">{{data.status}}</span>
+                        </div>
+                       </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="py-2">
+                                <label class="py-1">Job Description</label>
+                                <span type="text"   class="form-control">{{data.jobdescription}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section> -->
+  <section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 w-100 my-3 title-block" >
+               <!-- -------------------MyTable-------------------- -->
+                  <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th width="10%">S.No</th>
+                            <th>Job Role</th>
+                            <th>Positions</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <!-- <th>Job Posted In</th> -->
+                            <!-- <th>Description</th> -->
+                            <th>Action</th>
+                            <th>Activity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr  *ngFor="let data of allPosted | paginate
+                        : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          } | orderBy:'$index':true;let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{data.title}}</td>
+                            <td>{{data.positions}}</td>
+                            <td>{{data.email}}</td>
+                            <td>{{data.status}}</td>
+                            <!-- <td>{{data.jobto}}</td> -->
+                            <!-- <td [innerHTML]="data.jobdescription" ></td> -->
+                            <td> <span class="edit" routerLink="/hiring/edit-job-post/{{data.uniqueid}}"><i class="fa-solid fa-pen-to-square"></i></span>
+                                <span class="delete" (click)="deleteRequirement(data.uniqueid)"><i class="fa-solid fa-trash"></i></span></td>
+                                <td><button class="timeline-btn bg-theme text-white" routerLink="/hiring/timeline/{{data.uniqueid}}" (click)="prvRoute()"><i class="fa-solid fa-clock"></i>&nbsp;Timeline</button></td>
+                        </tr>
+                       
+                        <!-- and so on... -->
+                    </tbody>
+                </table>
+                <app-server-issue *ngIf="serverIssue"></app-server-issue>
+            </div>
+        </div>
+    </div>
+</section>
+

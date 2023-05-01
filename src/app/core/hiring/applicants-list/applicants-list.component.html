@@ -1,0 +1,165 @@
+<section>
+    <div class="card my-2 mx-2 py-2 px-2 bg-theme text-light">
+        <div class="row">
+            <div class="col-md-8">
+                <form [formGroup]="frmDateform" (ngSubmit)="filtreData()">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <table>
+                                <tr>
+                                    <td>From Date</td>
+                                    <td>&nbsp;:&nbsp;</td>
+                                    <td><input  type="date" formControlName="fromdate" class="form-control my-2"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-4">
+                            <table>
+                                <tr>
+                                    <td>To Date</td>
+                                    <td>&nbsp;:&nbsp;</td>
+                                    <td><input type="date" formControlName="todate" class="form-control my-2" ></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-4 d-flex">
+                            <div class="py-2 px-1">
+                                <button class="btn resetbtn" (click)="dateFilter()">Submit</button>
+                            </div>
+                            <div class="py-2 px-1">
+                                <button class="btn resetbtn" (click)="resetFilter()">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+           
+            <div class="col-md-4">
+                <div class="table-search">
+                    <input class="my-2 w-75 form-control" type="text" [(ngModel)]="searchText" placeholder="Search any here...."/>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section> 
+<section>
+    <div class="row p-0 m-0">
+        <div class="d-flex">
+            <span class="mx-2 h6 my-1">Priority:</span>
+            <div class="mx-2"><span class="model class_one">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span>&nbsp;:&nbsp;</span><span>High</span></div>
+            <div class="mx-2"><span class="model class_three">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span>&nbsp;:&nbsp;</span><span>Medium</span></div>
+            <div class="mx-2"><span class="model class_two">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span>&nbsp;:&nbsp;</span><span>Low</span></div>
+
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 w-100 my-1">
+                <!-- -------------------MyTable-------------------- -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%;">S.No</th>
+                            <th style="width: 15%;">Applicant Name</th>
+                            <th style="width: 15%;">Position</th>
+                            <th style="width: 7%;">Experiance</th>
+                            <th style="width: 15%;">Date of Apply</th>
+                            <th style="width: 15%;">Download Resume</th>
+                            <th style="width: 15%;">Stage</th>
+                            <th style="width: 12%;">Activity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of applicantsData | search:searchText | orderBy:'$index':true;let i = index" [ngClass]="{'class_one': data.priority === 'high', 'class_two' : data.priority === 'low','class_three' : data.priority === 'medium' }" 
+
+                        >
+                            <td >{{i+1}}</td>
+                            <td [innerHTML]="data.fullname | textHighlight:searchText"></td>
+                            <td [innerHTML]="data.jobrole | textHighlight:searchText"></td>
+                            <td [innerHTML]="data.totalworkexp | textHighlight:searchText"></td>
+                            <td>{{data.applydate | date }}</td>
+                            <td><a href="{{data.resume}}" class="pdfButton py-1 px-4"
+                                    download="proposed_file_name">Download</a></td>
+                            <td>
+                                <!-- <ngb-toast *ngIf="show" header="Click my close icon →" [autohide]="false" (hidden)="close()">
+                                    If you close me, I will automatically re-appear after a few seconds.
+                                </ngb-toast> -->
+
+                                <select class="" name="" id="{{data.id}}" (change)="updateStatus($event)">
+                                    <option  value="{{data.status}}" selected>{{data.status}}</option>
+                                    <option
+                                        value='{"id":{{data.applicationid}},"value":"Applied"}'
+                                        *ngIf="data.status !== 'Applied'">Applied</option>
+                                    <option style="border:1px solid red !important"
+                                        value='{"id":{{data.applicationid}},"value":"Screening"}'
+                                        *ngIf="data.status !== 'Screening'">Screening</option>
+                                    <option value='{"id":{{data.applicationid}},"value":"Rejected"}' *ngIf="data.status !== 'Rejected'">Rejected</option>
+                                    <option value='{"id":{{data.applicationid}},"value":"Shortlisted"}' *ngIf="data.status !== 'Shortlisted'">Shortlisted</option>
+                                    
+                                    <option id="{{data.id}}"
+                                        value='{"id":{{data.applicationid}},"value":"Scheduled Interview"}'
+                                        *ngIf="data.status !== 'Scheduled Interview'">Scheduled Interview</option>
+                                    <optgroup label="Assessment">
+                                        <option value='{"id":{{data.applicationid}},"value":"Assessment-Sent"}'
+                                            *ngIf="data.status !== 'Assessment-Sent'">Assessment-Sent</option>
+                                        <option value='{"id":{{data.applicationid}},"value":"Assessment-Received"}'
+                                            *ngIf="data.status !== 'Assessment-Received'">Assessment-Received</option>
+                                    </optgroup>
+                                    <optgroup label="Selection stages">
+                                        <option value='{"id":{{data.applicationid}},"value":"selection-Selected"}'
+                                            *ngIf="data.status !== 'selection-Selected'">selection-Selected</option>
+                                        <option value='{"id":{{data.applicationid}},"value":"selection-Rejected"}'
+                                            *ngIf="data.status !== 'selection-Rejected'">selection-Rejected</option>
+                                        <option value='{"id":{{data.applicationid}},"value":"selection-Hold"}'
+                                            *ngIf="data.status !== 'selection-Hold'">selection-Hold</option>
+                                    </optgroup>
+                                    <option value='{"id":{{data.applicationid}},"value":"Documentation"}'
+                                        *ngIf="data.status !== 'Documentation'">Documentation</option>
+                                    <option value='{"id":{{data.applicationid}},"value":"Onboarding-Process"}'
+                                        *ngIf="data.status !== 'Onboarding-Process'">Onboarding-Process</option>
+                                    <optgroup label="Offer-letter">
+                                        <option value='{"id":{{data.applicationid}},"value":"Offerletter-Relesed"}'
+                                            *ngIf="data.status !== 'Offerletter-Relesed'">Offerletter-Relesed</option>
+                                        <option value='{"id":{{data.applicationid}},"value":"Offerletter-Hold"}'
+                                            *ngIf="data.status !== 'Offerletter-Hold'">Offerletter-Hold</option>
+                                        <option value='{"id":{{data.applicationid}},"value":"Offerletter-Rejected"}'
+                                            *ngIf="data.status !== 'Offerletter-Rejected'">Offerletter-Rejected</option>
+                                    </optgroup>
+                                    <option value='{"id":{{data.applicationid}},"value":"Joining-process"}'
+                                        *ngIf="data.status !== 'Joining-process'">Joining-process</option>
+                                    <optgroup label="Appointment-letter">
+                                        <option
+                                            value='{"id":{{data.applicationid}},"value":"Appointmentletter-Relesed"}'
+                                            *ngIf="data.status !== 'Appointmentletter-Relesed'">
+                                            Appointmentletter-Relesed</option>
+                                        <option value='{"id":{{data.applicationid}},"value":"Appointmentletter-Hold"}'
+                                            *ngIf="data.status !== 'Appointmentletter-Hold'">Appointmentletter-Hold
+                                        </option>
+                                        <option
+                                            value='{"id":{{data.applicationid}},"value":"Appointmentletter-Rejected"}'
+                                            *ngIf="data.status !== 'Appointmentletter-Rejected'">
+                                            Appointmentletter-Rejected</option>
+                                    </optgroup>
+                                    <option value='{"id":{{data.applicationid}},"value":"Onboarded"}'
+                                        *ngIf="data.status !== 'Onboarded'">Onboarded</option>
+                                </select>
+                            </td>
+                            <td><button class="timeline-btn bg-theme text-white" routerLink="/hiring/timeline/{{data.applicationid}}" (click)="prvRoute()"><i class="fa-solid fa-clock"></i>&nbsp;Timeline</button></td>
+                        </tr>
+                        <!-- and so on... -->
+                    </tbody>
+                </table>
+                <div class="text-center mt-5" *ngIf="noData == true">
+                    <span class="text-center text-danger">No Data Found</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-server-issue *ngIf="serverIssue"></app-server-issue>

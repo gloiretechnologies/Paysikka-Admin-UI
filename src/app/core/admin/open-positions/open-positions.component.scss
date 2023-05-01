@@ -1,0 +1,40 @@
+.download{
+    background-color:#e63946;
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+
+
+// ----------------My TAble--------------
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0px auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    margin-top: 0 !important;
+}
+
+.styled-table thead tr {
+    background-color: #202A44;
+    color: #fff;
+
+}
+.styled-table th{
+    border: none !important;
+}
+.styled-table th,
+.styled-table td {
+    padding: 5px;
+    border: 1px solid #665e5e;
+    text-align: center;
+
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}

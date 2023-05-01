@@ -1,0 +1,67 @@
+<section>
+    <div class="row w-75 m-auto mt-5">
+        <div class="page-title text-center">
+            <h5>Add Holiday</h5>
+        </div>
+        <form [formGroup]="holidayForm" (ngSubmit)="onSubmit()">
+  
+            <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <label class="my-2">Holiday Name</label>
+                      <input type="text" formControlName="holidayname" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f['holidayname'].errors }" />
+                      <div *ngIf="submitted && f['holidayname'].errors" class="invalid-feedback">
+                          <div *ngIf="f['holidayname'].errors['required']">Holiday Name is required</div>
+                      </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <!-- <label>Priority</label>
+                        <select class="form-control" formControlName="Priority"
+                            [ngClass]="{ 'is-invalid': submitted && f['Priority'].errors }">
+                            <option value="" default selected>--select--</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                        <div *ngIf="submitted && f['Priority'].errors" class="invalid-feedback">
+                            <div *ngIf="f['Priority'].errors['required']">Priority is required</div>
+  
+                        </div> -->
+                        <div class="form-group">
+                          <label class="my-2">Holiday Date</label>
+                          <input type="date" formControlName="holidaydate" class="form-control"
+                              [ngClass]="{ 'is-invalid': submitted && f['holidaydate'].errors }" />
+                          <div *ngIf="submitted && f['holidaydate'].errors" class="invalid-feedback">
+                              <div *ngIf="f['holidaydate'].errors['required']">Holiday Date is required</div>
+    
+                          </div>
+                      </div>
+  
+                    </div>
+                </div>
+            </div>
+           <!-- <div class="row mt-2">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label class="my-2">Day</label>
+                      <input type="text" formControlName="day" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f['day'].errors }" />
+                      <div *ngIf="submitted && f['day'].errors" class="invalid-feedback">
+                          <div *ngIf="f['day'].errors['required']">Day is required</div>
+  
+                      </div>
+                  </div>
+              </div>
+           </div> -->
+  
+  
+  
+            <div class="form-group mt-5">
+                <button class="w-50" type="submit" class="btn bg-theme text-light">Submit</button>
+            </div>
+        </form>
+    </div>
+  </section>

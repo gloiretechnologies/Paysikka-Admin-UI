@@ -1,0 +1,53 @@
+<div class="form-group">
+    <input type="text" class="form-control search-field" placeholder="What do you want search here"
+        [(ngModel)]="searchText">
+</div>
+<section>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12 w-100 my-5">
+                <!---------------------MyTable---------------------->
+                <table class="styled-table">
+                    <thead>
+                        <tr style="margin: 0;padding: 0;">
+                            <th>Sr.No</th>
+                            <th>Emp ID</th>
+                            <th>Day Type</th>
+                            <th>Date</th>
+                            <th>Leave Type</th>
+                            <th>Start-Date</th>
+                            <th>End-Date</th>
+                            <th>Update Status</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr  style="margin: 0;padding: 0;">
+                            <td>{{1}}</td>
+                            <td>{{id}}</td>
+                            <td>{{ lvdaytype}}</td>
+                            <td>{{ date | date}}</td>
+                            <td>{{ lvtype}}</td>
+                            <td><a class="inTime">{{ strdate}}</a></td>
+                            <td><a class="outTime">{{ enddate}}</a> </td>
+                            <td><select name="" [ngClass]=" updateColor(lvstatus)" id="{{ id}}"  (change)="updateStatus($event)">
+                                <option value="{{ lvstatus}}" selected>{{ lvstatus}}</option>
+                                    <option  value="Approved" *ngIf=" lvstatus !== 'Approved'">Approved</option>
+                                    <option  value="Rejected" *ngIf=" lvstatus !== 'Rejected'">Rejected</option>
+                            </select> </td>
+                            <td>{{ note}}</td>
+                           
+                            <!-- <td><button type="button" class="btn  btn-sm regularize" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" >
+                                    <i class="fa-solid fa-pen-to-square"></i> Regularize
+                                </button></td> -->
+                           
+                        </tr>
+                    </tbody>
+                </table>
+               
+            </div>
+        </div>
+    </div>
+</section>

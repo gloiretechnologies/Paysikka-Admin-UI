@@ -1,0 +1,27 @@
+<div class="top-nav sticky-top">
+  <nav class="navbar navbar-light bg-light m-auto">
+    <div class="row w-100">
+      <div class="col-md-10">
+        <button class="navbar-toggler" type="button" (click)="toggle()">
+          <span class="navbtn">
+            <i class="fa-solid fa-ellipsis-vertical" *ngIf="opened"></i>
+           <i class="fa-solid fa-ellipsis-vertical" *ngIf="!opened"></i>
+          </span>
+        </button>
+
+        <b><a  class="text-dash" style=" text-transform: capitalize;">{{title}}</a></b>
+        
+      </div>
+      <div class="col-md-1 m-auto">
+        <i routerLink="/admin/profile" class="fa-solid fa-user user-icon"></i>
+      </div>
+      
+      <!-- <div class="col-md-1 col-2">
+        <i class="fa-solid fa-bell user-icon"></i>
+      </div> -->
+      <div class="col-md-1 m-auto">
+        <button class="logout" (click)="logout()"><i class="fa-solid fa-power-off user-icon"></i></button>
+      </div>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,1460 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Profile Photo</h5>
+                <button type="button" class="btn-close btn-light" style="background-color:#fff" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body container">
+                <div class="text-center p-5">
+                    <img class="popupImg" src="{{employeeImage}}" alt="">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<section>
+    <div class="card my-2 mx-2 py-2 px-2 bg-theme text-light">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="">
+                    <table class="">
+                        <tr>
+                            <td>Fullname </td>
+                            <td>&nbsp;:&nbsp;</td>
+                            <!-- <td>&nbsp;{{singleEmpData.firstname}}&nbsp;{{singleEmpData.lastname}}</td> -->
+                            <td>{{empname}}</td>
+                        </tr>
+                        <tr>
+                            <td>Designation</td>
+                            <td>&nbsp;:&nbsp;</td>
+                            <td>&nbsp;{{empJobrole}}</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="">
+                    <table class="">
+                        <tr>
+                            <td>Department&nbsp;</td>
+                            <td>&nbsp;:&nbsp;</td>
+                            <td>{{empDepartment}}</td>
+                        </tr>
+                        <tr>
+                            <td>Employee ID</td>
+                            <td>&nbsp;:&nbsp;</td>
+                            <td>{{empID}}</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="">
+                    <table class="">
+                        <tr>
+                            <td>Email </td>
+                            <td>&nbsp;:&nbsp;</td>
+                            <td>{{empEmail}}</td>
+                        </tr>
+                        <tr>
+                            <td>Mobile</td>
+                            <td>&nbsp;:&nbsp;</td>
+                            <td>{{empPhone}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="empImg">
+                    <img class="empImg " data-bs-toggle="modal" data-bs-target="#exampleModal" src="{{employeeImage}}"
+                        alt="">
+                    <img *ngIf="employeeImage==''" class="empImg" src="../../../../assets/93385-login.gif" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row mt-1">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-Primary-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Primary" type="button" role="tab" aria-controls="nav-Primary"
+                        aria-selected="true">Primary Details</button>
+                    <button class="nav-link" id="nav-Contact-tab" data-bs-toggle="tab" data-bs-target="#nav-Contact"
+                        type="button" role="tab" aria-controls="nav-Contact" aria-selected="false">Contact
+                        Details</button>
+                    <button class="nav-link" id="nav-Address-tab" data-bs-toggle="tab" data-bs-target="#nav-Address"
+                        type="button" role="tab" aria-controls="nav-Address" aria-selected="false">Address</button>
+                    <button class="nav-link" id="nav-Relations-tab" data-bs-toggle="tab" data-bs-target="#nav-Relations"
+                        type="button" role="tab" aria-controls="nav-Relations" aria-selected="false">Relations</button>
+                    <button class="nav-link" id="nav-Experience-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Experience" type="button" role="tab" aria-controls="nav-Experience"
+                        aria-selected="false">Experience</button>
+                    <button class="nav-link" id="nav-Education-tab" data-bs-toggle="tab" data-bs-target="#nav-Education"
+                        type="button" role="tab" aria-controls="nav-Education" aria-selected="false">Education</button>
+                    <button class="nav-link" id="nav-Professional-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Professional" type="button" role="tab" aria-controls="nav-Professional"
+                        aria-selected="false">Professional Summary</button>
+                    <button class="nav-link" id="nav-Documents-tab" data-bs-toggle="tab" data-bs-target="#nav-Documents"
+                        type="button" role="tab" aria-controls="nav-Documents" aria-selected="false">Documents</button>
+                    <button class="nav-link" id="nav-bank-tab" data-bs-toggle="tab" data-bs-target="#nav-bank"
+                        type="button" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Details</button>
+                    <button class="nav-link" id="nav-leave-tab" data-bs-toggle="tab" data-bs-target="#nav-leave"
+                        type="button" role="tab" aria-controls="nav-leave" aria-selected="false">Leave Balances</button>
+                </div>
+            </nav>
+            <div class="tab-content mt-5" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-Primary" role="tabpanel"
+                    aria-labelledby="nav-Primary-tab">
+                    <section>
+                        <div class="row m-auto w-75 mt-2">
+                            <div class="page-title text-center">
+                                <h5>Update Primary Details here</h5>
+                            </div>
+                            <form [formGroup]="empPrimaryDetailsForm" (ngSubmit)="primaryFormSubmit()">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="py-2">First Name <span class="text-danger">*</span></label>
+                                            <input type="text" formControlName="firstname" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted1 && f1['firstname'].errors }" />
+                                            <div *ngIf="submitted1 && f1['firstname'].errors" class="invalid-feedback">
+                                                <div *ngIf="f1['firstname'].errors['required']">First Name is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="py-2">Display Name <span class="text-danger">*</span></label>
+                                            <input type="text" formControlName="displayname" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted1 && f1['displayname'].errors }" />
+                                            <div *ngIf="submitted1 && f1['displayname'].errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f1['displayname'].errors['required']">Display Name is
+                                                    required</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="py-2">Blood Group <span class="text-danger">*</span></label>
+                                            <select type="text" class="form-select" formControlName="bloodgroup"
+                                                [ngClass]="{ 'is-invalid': submitted1 && f1['bloodgroup'].errors }"
+                                                name="" id="">
+                                                <option value="">--select--</option>
+                                                <option value="O+">O+</option>
+                                                <option value="O-">O-</option>
+                                                <option value="A+">A+</option>
+                                                <option value="A-">A-</option>
+                                                <option value="B+">B+</option>
+                                                <option value="B+">B-</option>
+                                                <option value="AB+">AB+</option>
+                                                <option value="AB-">AB-</option>
+                                            </select>
+                                            <!-- <input type="text" formControlName="bloodgroup" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted1 && f1['bloodgroup'].errors }" /> -->
+
+                                            <div *ngIf="submitted1 && f1['bloodgroup'].errors" class="invalid-feedback">
+                                                <div *ngIf="f1['bloodgroup'].errors['required']">Blood Group is
+                                                    required</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="py-2">Gender <span class="text-danger">*</span></label>
+                                            <select formControlName="gender" class="form-select" type="text"
+                                                [ngClass]="{ 'is-invalid': submitted1 && f1['gender'].errors }" name=""
+                                                id="">
+                                                <option value="">--select--</option>
+                                                <option value="Male" selected>Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                            <!-- <input type="text" formControlName="gender" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted1 && f1['gender'].errors }" /> -->
+                                            <div *ngIf="submitted1 && f1['gender'].errors" class="invalid-feedback">
+                                                <div *ngIf="f1['gender'].errors['required']">Gender is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="py-2">Last Name <span class="text-danger">*</span></label>
+                                            <input type="text" formControlName="lastname" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted1 && f1['lastname'].errors }" />
+                                            <div *ngIf="submitted1 && f1['lastname'].errors" class="invalid-feedback">
+                                                <div *ngIf="f1['lastname'].errors['required']">Last Name is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="py-2">marital status <span
+                                                    class="text-danger">*</span></label>
+                                            <select formControlName="maritalstatus" type="text" class="form-select"
+                                                [ngClass]="{ 'is-invalid': submitted1 && f1['maritalstatus'].errors }"
+                                                name="" id="">
+                                                <option value="">--select--</option>
+                                                <option value="Unmarried" selected>Unmarried</option>
+                                                <option value="Married">Married</option>
+                                                <option value="widow">Widow</option>
+                                            </select>
+                                            <div *ngIf="submitted1 && f1['maritalstatus'].errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f1['maritalstatus'].errors['required']">Marital status is
+                                                    required</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="py-2">Physically Handicapped Status <span
+                                                    class="text-danger">*</span></label>
+                                            <select formControlName="physicallyhandicapped" type="text" class="form-select"
+                                                [ngClass]="{ 'is-invalid': submitted1 && f1['physicallyhandicapped'].errors }"
+                                                name="" id="">
+                                                <option value="" selected>--select--</option>
+                                                <option value="No">No</option>
+                                                <option value="Yes">Yes</option>
+                                            </select>
+                                            <!-- <input type="text" formControlName="physicallyhandicapped" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted1 && f1['physicallyhandicapped'].errors }" /> -->
+                                            <div *ngIf="submitted1 && f1['physicallyhandicapped'].errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f1['physicallyhandicapped'].errors['required']">Physically
+                                                    Handicapped status is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="py-2">Date Of Birth <span class="text-danger">*</span></label>
+                                            <input type="date" formControlName="dateofbirth" type="text" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted1 && f1['dateofbirth'].errors }" />
+                                            <div *ngIf="submitted1 && f1['dateofbirth'].errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f1['dateofbirth'].errors['required']">Date of Birth Joining
+                                                    is
+                                                    required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group my-5 w-50">
+                                    <button type="submit" class="btn bg-theme text-light w-100">Submit</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+                <div class="tab-pane fade" id="nav-Contact" role="tabpanel" aria-labelledby="nav-Contact-tab">
+                    <section>
+                        <div class="row m-auto w-75 mt-2">
+                            <div class="page-title text-center">
+                                <h5>Update contact Details here</h5>
+                            </div>
+                            <form [formGroup]="empContactDetailsForm" (ngSubmit)="contactFormSubmit()">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="py-2">Personal Email <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" formControlName="personalemail" class="form-control"
+                                                
+                                                [ngClass]="{ 'is-invalid': submitted2 && f2['personalemail'].errors }" />
+                                            <div *ngIf="submitted2 && f2['personalemail'].errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f2['personalemail'].errors['required']">Personal Email is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="py-2">Mobile Number <span class="text-danger">*</span></label>
+                                            <input type="text" formControlName="mobile" class="form-control"
+                                                [ngClass]="{'is-invalid': submitted2 && f2['mobile'].errors }" />
+                                            <div *ngIf="submitted2 && f2['mobile'].errors" class="invalid-feedback">
+                                                <div *ngIf="f2['mobile'].errors['required']">Mobile is required</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="py-2">Residance Phone <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" formControlName="residencephone" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted2 && f2['residencephone'].errors }" />
+                                            <div *ngIf="submitted2 && f2['residencephone'].errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f2['residencephone'].errors['required']">Residance Phone is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="py-2">Work Email <span class="text-danger">*</span></label>
+                                            <input type="text" formControlName="workemail" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted2 && f2['workemail'].errors }" />
+                                            <div *ngIf="submitted2 && f2['workemail'].errors" class="invalid-feedback">
+                                                <div *ngIf="f2['workemail'].errors['required']">Work Email is required
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="py-2">Work phone <span class="text-danger">*</span></label>
+                                            <input type="text" formControlName="workphone" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted2 && f2['workphone'].errors }" />
+                                            <div *ngIf="submitted2 && f2['workphone'].errors" class="invalid-feedback">
+                                                <div *ngIf="f2['workphone'].errors['required']">Workphone is required
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group my-5 w-50">
+                                    <button type="submit" class="btn bg-theme text-light w-100">Submit</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+                <div class="tab-pane fade" id="nav-Address" role="tabpanel" aria-labelledby="nav-Address-tab">
+                    <section>
+                        <div class="row m-auto w-75 mt-2">
+                            <div class="page-title text-center">
+                                <h5>Update Address Details here</h5>
+                            </div>
+                            <form [formGroup]="empAddressDetailsForm" (ngSubmit)="addressFormSubmit()">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="py-2">Prensent Address <span
+                                                    class="text-danger">*</span></label>
+                                            <textarea type="text" formControlName="presentaddress" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted3 && f3['presentaddress'].errors }"
+                                                name="" id="" cols="30" rows="5"></textarea>
+                                            <div *ngIf="submitted3 && f3['presentaddress'].errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f3['presentaddress'].errors['required']">Present Address is
+                                                    required</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="py-2">Prensent Address PIN <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" formControlName="presentaddresspin" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted3 && f3['presentaddresspin'].errors }" />
+                                            <div *ngIf="submitted3 && f3['presentaddresspin'].errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f3['presentaddresspin'].errors['required']">Prensent address
+                                                    PIN is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mt-5">
+                                            <label class="py-2">Perminent Address <span
+                                                    class="text-danger">*</span></label>
+                                            <textarea type="text" formControlName="permanentaddress"
+                                                class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted3 && f3['permanentaddress'].errors }"
+                                                name="" id="" cols="30" rows="5"></textarea>
+                                            <div *ngIf="submitted3 && f3['permanentaddress'].errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f3['permanentaddress'].errors['required']">Permanent Address
+                                                    is
+                                                    required</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="py-2">Perminent Address PIN <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" formControlName="permanentaddresspin" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted3 && f3['permanentaddresspin'].errors }" />
+                                            <div *ngIf="submitted3 && f3['permanentaddresspin'].errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f3['permanentaddresspin'].errors['required']">Perminent
+                                                    address PIN is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group my-5 w-50">
+                                    <button type="submit" class="btn bg-theme text-light w-100">Submit</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+                <div class="tab-pane fade" id="nav-Relations" role="tabpanel"
+                    aria-labelledby="nav-AddrRelationsess-tab">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <section>
+                                <div class="row m-auto w-100 mt-2">
+                                    <div class="page-title text-center">
+                                        <h5>Add/Update Relations Details here</h5>
+                                    </div>
+                                    <form [formGroup]="empRelationsDetailsForm" (ngSubmit)="relationsFormSubmit()">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="py-2">Relation Type <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="hidden" formControlName="relationid"
+                                                        class="form-control">
+                                                    <select name="" id="" type="text" formControlName="relationtype"
+                                                        class="form-select"
+                                                        [ngClass]="{ 'is-invalid': submitted4 && f4['relationtype'].errors }">
+                                                        <option value="">--select--</option>
+                                                        <option value="Father">Father</option>
+                                                        <option value="Mother">Mother</option>
+                                                        <option value="Brother">Brother</option>
+                                                        <option value="Spouse">Spouse</option>
+                                                        <option value="Grand Father">Grand Father</option>
+                                                        <option value="Son">Son</option>
+                                                        <option value="Daughter">Daughter</option>
+                                                        <Option value="Others">Others</Option>
+                                                    </select>
+                                                    <div *ngIf="submitted4 && f4['relationtype'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f4['relationtype'].errors['required']">Relation Type
+                                                            is required
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="py-2">Full Name <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" formControlName="fullname" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted4 && f4['fullname'].errors }" />
+                                                    <div *ngIf="submitted4 && f4['fullname'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f4['fullname'].errors['required']">Full Name is
+                                                            required
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="py-2">Mobile Number <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" formControlName="mobile" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted4 && f4['mobile'].errors }" />
+                                                    <div *ngIf="submitted4 && f4['mobile'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f4['mobile'].errors['required']">Mobile Number is
+                                                            required
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="py-2">Address <span
+                                                            class="text-danger">*</span></label>
+                                                    <textarea type="text" formControlName="address" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted4 && f4['address'].errors }"
+                                                        name="" id="" cols="30" rows="5"></textarea>
+                                                    <div *ngIf="submitted4 && f4['address'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f4['address'].errors['required']">Address is
+                                                            required</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="d-flex justify-content-between" style="margin-left: 10px;">
+                                            <div class="form-group my-5 w-50" *ngIf="wantUpdate==false">
+                                                <button type="submit" class="btn bg-theme text-light w-100">Add New
+                                                    Relation</button>
+                                            </div>
+                                            <div class="form-group my-5 w-50" *ngIf="wantUpdate==true">
+                                                <button type="submit" class="btn bg-theme text-light w-100">Update
+                                                    Relation</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </section>
+
+                        </div>
+                        <div class="col-md-8">
+                            <button type="submit" *ngIf="wantUpdate==true" class="btn bg-theme text-light w-100 m-10"
+                                style="margin-bottom: 10px;" (click)="resetMyRelFrm()">Add New Relation</button>
+                            <div class="card p-3">
+                                <div class="row">
+                                    <table class="styled-table text-center">
+                                        <thead>
+                                            <th>S.NO</th>
+                                            <th>Full Name</th>
+                                            <th>Relation Type</th>
+                                            <th>Mobile Number</th>
+                                            <th>Address</th>
+                                            <th>Actions</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let data of relationsData ; let i=index">
+                                                <td>{{i+1}}</td>
+                                                <td>{{data.fullname}}</td>
+                                                <td> {{data.relationtype}}</td>
+                                                <td>{{data.mobile}}</td>
+                                                <td>{{data.address}}</td>
+                                                <td><span class="edit" (click)="editRelationData(data)"><i
+                                                            class="fa-solid fa-pen-to-square"></i></span>&nbsp;
+                                                    &nbsp;<span class="delete"
+                                                        (click)="deleteEmpRelation(data._id                                                                                                                                                                                  )"><i
+                                                            class="fa-solid fa-trash text-danger"></i></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <div class="text-center" *ngIf="relationBoolean">
+                                        <span class="text-center text-danger">No Data Found</span>
+
+                                    </div>
+
+                                </div>
+                                <!-- <div class="row">
+                                    <table class="table table-light">
+                                        <thead class="text-light">
+                                            <th>S.NO</th>
+                                            <th>Full Name</th>
+                                            <th>Relation Type</th>
+                                            <th>Mobile Number</th>
+                                            <th>Address</th>
+                                            <th>Actions</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let data of relationsData ; let i=index">
+                                                <td>{{i+1}}</td>
+                                                <td>{{data.fullname}}</td>
+                                                <td> {{data.relationtype}}</td>
+                                                <td>{{data.mobile}}</td>
+                                                <td>{{data.address}}</td>
+                                                <td><span class="edit" (click)="editRelationData(data)"><i class="fa-solid fa-pen-to-square"></i></span>&nbsp;
+                                        &nbsp;<span class="delete" (click)="deleteEmpRelation(data._id)"><i class="fa-solid fa-trash text-danger"></i></span>
+                                                </td>
+                                            </tr>
+                                           
+                                            
+        
+                                        </tbody>
+                                        
+                                    </table>
+                                    <div class="text-center" *ngIf="relationBoolean">
+                                        <span class="text-center text-danger">No Data Found</span>
+
+                                    </div>
+        
+                                </div> -->
+
+                            </div>
+                            <!-- <div class="card relation-cards p-3" *ngFor="let data of relationsData ">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <label for="">Full Name :</label>
+                                        {{data.fullname}}
+                                    </div>
+                                    <div class="col-md-4 text-end">
+                                        <span class="edit" (click)="editRelationData(data)"><i class="fa-solid fa-pen-to-square"></i></span>
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-md-6">
+                                        <label for="">Relation Type :</label>
+                                        {{data.relationtype}}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Mobile Number :</label>
+                                        {{data.mobile}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <label for="">Address :</label>
+                                        </div>
+                                        {{data.address}}
+
+                                    </div>
+                                </div>
+
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-Experience" role="tabpanel" aria-labelledby="nav-Experience-tab">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <section>
+                                <div class="row m-auto w-100 mt-2">
+                                    <div class="page-title text-center">
+                                        <h5>Update Experience Details here</h5>
+                                    </div>
+                                    <form [formGroup]="empExperianceDetailsForm" (ngSubmit)="experianceFormSubmit()">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="py-2">Designation <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="hidden" formControlName="experienceid">
+                                                    <input type="text" formControlName="designation" class="form-control"
+                                                        [ngClass]="{'is-invalid': submitted5 && f5['designation'].errors }" />
+                                                    <div *ngIf="submitted5 && f5['designation'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f5['designation'].errors['required']">Job Title is
+                                                            required
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="py-2">From and To <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" formControlName="fromto" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted5 && f5['fromto'].errors }" />
+                                                    <div *ngIf="submitted5 && f5['fromto'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f5['fromto'].errors['required']">Description is
+                                                            required
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="py-2">Reporting To <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" formControlName="reportingto" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted5 && f5['reportingto'].errors }" />
+                                                    <div *ngIf="submitted5 && f5['reportingto'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f5['reportingto'].errors['required']">Start Date is
+                                                            required
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="py-2">Main Work <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" formControlName="mainwork" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted5 && f5['mainwork'].errors }" />
+                                                    <div *ngIf="submitted5 && f5['mainwork'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f5['mainwork'].errors['required']">End Date is
+                                                            required</div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="py-2">Organizationname <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" formControlName="organizationname" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted5 && f5['organizationname'].errors }" />
+                                                    <div *ngIf="submitted5 && f5['organizationname'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f5['organizationname'].errors['required']">Company
+                                                            Name is
+                                                            required</div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="py-2">Experiance in years <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" formControlName="expinyears" class="form-control"
+                                                       
+                                                        [ngClass]="{ 'is-invalid': submitted5 && f5['expinyears'].errors }" />
+                                                    <div *ngIf="submitted5 && f5['expinyears'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f5['expinyears'].errors['required']">Company Name is
+                                                            required</div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="py-2">Salary <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" formControlName="salary" class="form-control"
+                                                      
+                                                        [ngClass]="{ 'is-invalid': submitted5 && f5['salary'].errors }" />
+                                                    <div *ngIf="submitted5 && f5['salary'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f5['salary'].errors['required']">Company Name is
+                                                            required</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between" style="margin-left: 10px;">
+                                            <div class="form-group my-5 w-50" *ngIf="wantUpdate==false">
+                                                <button type="submit" class="btn bg-theme text-light w-100">Add New
+                                                </button>
+                                            </div>
+                                            <div class="form-group my-5 w-50" *ngIf="wantUpdate==true">
+                                                <button type="submit" class="btn bg-theme text-light w-100">Update
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </section>
+
+                        </div>
+                        <div class="col-md-8">
+                            <button type="submit" *ngIf="wantUpdate==true" class="btn bg-theme text-light w-100 m-10"
+                                style="margin-bottom: 10px;" (click)="resetMyExperiFrm()">Add New Experience</button>
+
+                            <div class="card p-3">
+                                <div class="row">
+                                    <table class="table styled-table text-center table-light">
+                                        <thead class="text-light">
+                                            <th>S.No</th>
+                                            <th>Company Name</th>
+                                            <th>Job Title</th>
+                                            <th>From TO</th>
+                                            <th>Main work</th>
+                                            <th>Exp</th>
+                                            <!-- <th>Reporting To :</th> -->
+                                            <th>salary</th>
+                                            <th>Actions</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let data of expData; let i=index">
+                                                <td>{{i+1}}</td>
+                                                <td>{{data.organizationname}}</td>
+                                                <td>{{data.designation}}</td>
+                                                <td>{{data.fromto}}</td>
+                                                <td>{{data.mainwork}}</td>
+                                                <td> {{data.expinyears}}</td>
+                                                <!-- <td>{{data.reportingto}}</td> -->
+                                                <td>{{data.salary}}</td>
+                                                <td><span class="edit" (click)="editEmpexp(data)"><i
+                                                            class="fa-solid fa-pen-to-square"></i></span>&nbsp;
+                                                    &nbsp; &nbsp;<span class="delete"
+                                                        (click)="deleteEmpExp(data._id)"><i
+                                                            class="fa-solid fa-trash text-danger"></i></span>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <div class="text-center" *ngIf="expBoolean">
+                                        <span class="text-center text-danger">No Data Found</span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!-- <div class="card relation-cards p-3" *ngFor="let data of expData ">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="">Company Name :</label>
+                                        {{data.organizationname}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                        
+                                    <label for="">Job Title :</label>
+                                        {{data.designation}}
+
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-md-6">
+                                        <label for="">From TO :</label>
+                                        {{data.fromto}}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Main work :</label>
+                                        {{data.mainwork}}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Experiance in Years :</label>
+                                        {{data.expinyears}}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Reporting To :</label>
+                                        {{data.reportingto}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <label for="">salary :</label>
+                                            {{data.salary}}
+                                        </div>
+                                        
+
+                                    </div>
+                                </div>
+
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-Education" role="tabpanel" aria-labelledby="nav-Education-tab">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <section>
+                                <div class="row m-auto w-75 mt-2">
+                                    <div class="page-title text-center">
+                                        <h5>Add/Update Education Details </h5>
+                                    </div>
+                                    <form [formGroup]="empEducationDetailsForm" (ngSubmit)="educationFormSubmit()">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="py-2">Education Type <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="hidden" formControlName="educationid">
+                                                    <select name="" id="" type="text" formControlName="type"
+                                                        class="form-select"
+                                                        [ngClass]="{ 'is-invalid': submitted6 && f6['type'].errors }">
+                                                        <option value="">--select--</option>
+                                                        <option value="School">School</option>
+                                                        <option value="Intermidiate">Intermidiate</option>
+                                                        <option value="Graduation">Graduation</option>
+                                                        <Option value="Post Gradution">Post Gradution</Option>
+                                                        <option value="PHD">PHD</option>
+                                                    </select>
+                                                    <div *ngIf="submitted6 && f6['type'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f6['type'].errors['required']">Educational Type is
+                                                            required
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="py-2">School/College/University Name <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" formControlName="institutename"
+                                                    
+                                                        class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted6 && f6['institutename'].errors }" />
+                                                    <div *ngIf="submitted6 && f6['institutename'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f6['institutename'].errors['required']">
+                                                            School/College/University Name is required
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="py-2">Group <span class="text-danger">*</span></label>
+                                                    <input type="text" formControlName="group" class="form-control"
+                                                       
+                                                        [ngClass]="{ 'is-invalid': submitted6 && f6['group'].errors }" />
+                                                    <div *ngIf="submitted6 && f6['group'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f6['group'].errors['required']">Group is required
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="py-2">Percentage <span class="text-danger">*</span>
+                                                    </label>
+                                                    <input type="text" formControlName="grade" class="form-control"
+                                                       
+                                                        [ngClass]="{ 'is-invalid': submitted6 && f6['grade'].errors }" />
+                                                    <div *ngIf="submitted6 && f6['grade'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f6['grade'].errors['required']">Percentage is
+                                                            required</div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="py-2">Year of Pass <span class="text-danger">*</span>
+                                                    </label>
+                                                    <input type="text" formControlName="yearpassed" class="form-control"
+                                                
+                                                        [ngClass]="{ 'is-invalid': submitted6 && f6['yearpassed'].errors }" />
+                                                    <div *ngIf="submitted6 && f6['yearpassed'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f6['yearpassed'].errors['required']">Year of pass is
+                                                            required</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between" style="margin-left: 10px;">
+                                            <div class="form-group my-5 w-50" *ngIf="wantUpdate==false">
+                                                <button type="submit" class="btn bg-theme text-light w-100">Add New
+                                                </button>
+                                            </div>
+                                            <div class="form-group my-5 w-50" *ngIf="wantUpdate==true">
+                                                <button type="submit" class="btn bg-theme text-light w-100">Update
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </section>
+
+                        </div>
+                        <div class="col-md-8">
+                            <button type="submit" *ngIf="wantUpdate==true" class="btn bg-theme text-light w-100 m-10"
+                                style="margin-bottom: 10px;" (click)="resetMyEduFrm()">Add New Education</button>
+
+                            <div class="card p-3">
+                                <div class="row">
+                                    <table class="table styled-table text-center table-light">
+                                        <thead class="text-light">
+                                            <th>S.No</th>
+                                            <th>EducationType</th>
+                                            <th>Collage</th>
+                                            <th>Group</th>
+                                            <th>Percentage</th>
+                                            <!-- <th>Exp</th> -->
+                                            <!-- <th>Reporting To :</th> -->
+                                            <th>PassingYear</th>
+                                            <th>Actions</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let data of educationalData; let i=index">
+                                                <td>{{i+1}}</td>
+                                                <td>{{data.type}}</td>
+                                                <td>{{data.institutename}}</td>
+                                                <td>{{data.group}}</td>
+                                                <td>{{data.grade}}</td>
+                                                <td> {{data.yearpassed}}</td>
+                                                <!-- <td>{{data.reportingto}}</td> -->
+                                                <!-- <td>{{data.salary}}</td> -->
+                                                <td><span class="edit" (click)="editEducationalData(data)"><i
+                                                            class="fa-solid fa-pen-to-square"></i></span>&nbsp;
+                                                    &nbsp; &nbsp;<span class="delete"
+                                                        (click)="deleteEmpEducation(data._id)"><i
+                                                            class="fa-solid fa-trash text-danger"></i></span>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                <div class="text-center" *ngIf="educationBoolean">
+                                        <span class="text-center text-danger">No Data Found</span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <button type="submit" *ngIf="wantUpdate==true" class="btn bg-theme text-light w-100 m-10" style="margin-bottom: 10px;" (click)="resetMyEduFrm()">Add New Experience</button>
+
+                            <div class="card relation-cards p-3" *ngFor="let data of educationalData ">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <label for=""> {{data.type}} :</label>
+                                        {{data.institutename}}
+                                    </div>
+                                    <div class="col-md-2 text-end">
+                                        <span class="edit" (click)="editEducationalData(data)"><i
+                                                class="fa-solid fa-pen-to-square"></i></span>
+                                        &nbsp; &nbsp;<span class="delete" (click)="deleteEmpEducation(data._id)"><i
+                                                class="fa-solid fa-trash text-danger"></i></span>
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-md-6">
+                                        <label for="">Year Of Pass :</label>
+                                        {{data.yearpassed}}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Percentage :</label>
+                                        {{data.grade}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="">Group :</label>
+                                        {{data.group}}
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="text-center card relation-cards mt-5" *ngIf="educationBoolean">
+                                <span class="text-center text-danger">No Data Found</span>
+
+                            </div>
+
+                        </div> -->
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-Professional" role="tabpanel" aria-labelledby="nav-Professional-tab">
+                    <div class="col-md-12">
+                        <section>
+                            <div class="row m-auto w-75 mt-2">
+                                <div class="page-title text-center">
+                                    <h5>Update Professional summary</h5>
+                                </div>
+                                <form [formGroup]="ProfessionalsummaryForm" (ngSubmit)="professionalFormSubmit()">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="py-2">Languages Speak <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" formControlName="langspeak" class="form-control"
+                                                    
+                                                    [ngClass]="{ 'is-invalid': submitted7 && f7['langspeak'].errors }" />
+                                                <div *ngIf="submitted7 && f7['langspeak'].errors"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="f7['langspeak'].errors['required']">Speak Language is
+                                                        required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="py-2">Languages Read <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" formControlName="langread" class="form-control"
+                                                    [ngClass]="{ 'is-invalid': submitted7 && f7['langread'].errors }" />
+                                                <div *ngIf="submitted7 && f7['langread'].errors"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="f7['langread'].errors['required']">Read Language is
+                                                        required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="py-2">Strengths <span class="text-danger">*</span></label>
+                                                <input type="text" formControlName="strenths" class="form-control"
+                                                    [ngClass]="{ 'is-invalid': submitted7 && f7['strenths'].errors }" />
+                                                <div *ngIf="submitted7 && f7['strenths'].errors"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="f7['strenths'].errors['required']">Strength is required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="py-2">Weakness <span class="text-danger">*</span></label>
+                                                <input type="text" formControlName="weakness" class="form-control"
+                                                    [ngClass]="{ 'is-invalid': submitted7 && f7['weakness'].errors }" />
+                                                <div *ngIf="submitted7 && f7['weakness'].errors"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="f7['weakness'].errors['required']">Weakness is required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="py-2">professional summary <span
+                                                        class="text-danger">*</span> </label>
+                                                <textarea type="text" rows="6" cols="20"
+                                                    formControlName="professionalsummary" class="form-control"
+                                                    [ngClass]="{ 'is-invalid': submitted7 && f7['professionalsummary'].errors }"></textarea>
+                                                <div *ngIf="submitted7 && f7['professionalsummary'].errors"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="f7['professionalsummary'].errors['required']">
+                                                        Professonalsummery is required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group my-5 w-50">
+                                        <button type="submit" class="btn bg-theme text-light w-100">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="nav-Documents" role="tabpanel" aria-labelledby="nav-Documents-tab">
+                    <div class="col-md-12">
+                        <section>
+                            <div class="row m-auto w-75 mt-2">
+                                <div class="page-title text-center">
+                                    <h5>Documents</h5>
+                                </div>
+                                <div class="all_documents">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form #expDocumentForm="ngForm">
+                                                <div class="form-group">
+                                                    <label class="py-2">Experience Certificates <span
+                                                            class="text-danger">*</span></label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <input type="file" id="expfile"
+                                                                (change)="onFileChangeDocExp($event)" ngModel
+                                                                name="experience" class="form-control" />
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <button *ngIf="expDocument" class="pdf-download"><i
+                                                                    class="fa-solid fa-file-pdf"></i>&nbsp;<a
+                                                                    download="experience.pdf"
+                                                                    href="{{expDocument}}">Download</a></button>
+                                                            <div class="my-2" *ngIf="!expDocument">
+                                                                <span class="text-danger">Not yet Uploaded...</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <button class="btn bg-theme text-light w-50"
+                                                                (click)="submitexpDocument(expDocumentForm)">submit</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                            <form #aadharDocumentForm="ngForm">
+                                                <div class="form-group">
+                                                    <label class="py-2">Aadhar <span
+                                                            class="text-danger">*</span></label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <input type="file" id="aadharfile"
+                                                                (change)="onFileChangeDocAadhar($event)" ngModel
+                                                                name="aadhar" class="form-control" />
+
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <button *ngIf="aadhar" class="pdf-download"><i
+                                                                    class="fa-solid fa-file-pdf"></i> &nbsp;<a
+                                                                    href="{{aadhar}}"
+                                                                    download="aadhar.pdf">Download</a></button>
+                                                            <div class="my-2" *ngIf="!aadhar">
+                                                                <span class="text-danger">Not yet Uploaded...</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <button class="btn bg-theme text-light w-50"
+                                                                (click)="submitaadharDocument(aadharDocumentForm)">submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                            <form #educationDocForm="ngForm">
+                                                <div class="form-group">
+                                                    <label class="py-2">Education Certificates <span
+                                                            class="text-danger">*</span></label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <input type="file" id="edufile"
+                                                                (change)="onFileChangeEdu($event)" ngModel
+                                                                name="educationaldoc" class="form-control" />
+
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <button *ngIf="eduDocument" class="pdf-download"><i
+                                                                class="fa-solid fa-file-pdf"></i> &nbsp;<a
+                                                                href="{{eduDocument}}"
+                                                                download="aadhar.pdf">Download</a></button>
+                                                            <div class="my-2" *ngIf="!eduDocument">
+                                                                <span class="text-danger">Not yet Uploaded...</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <button class="btn bg-theme text-light w-50"
+                                                                (click)="submitEducationalDocument(educationDocForm)">submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <form #bankStatementFrom="ngForm">
+                                                <div class="form-group">
+                                                    <label class="py-2">Bank Statement <span
+                                                            class="text-danger">*</span></label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <input type="file" id="bankfile"
+                                                                (change)="onFileChangeBank($event)" ngModel
+                                                                name="bankstatementdoc" class="form-control" />
+
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <button *ngIf="bankStatement" class="pdf-download"><i
+                                                                    class="fa-solid fa-file-pdf"></i> &nbsp;<a
+                                                                    href="{{bankStatement}}"
+                                                                    download="bankstatement.pdf">Download</a></button>
+                                                            <div class="my-2" *ngIf="!bankStatement">
+                                                                <span class="text-danger">Not yet Uploaded...</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <button class="btn bg-theme text-light w-50"
+                                                                (click)="submitBankDocument(bankStatementFrom)">submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <form #PanDocForm="ngForm">
+                                                <div class="form-group">
+                                                    <label class="py-2">Pan Document <span
+                                                            class="text-danger">*</span></label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <input type="file" id="panfile"
+                                                                (change)="onFileChangepan($event)" ngModel name="pan"
+                                                                class="form-control" />
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <button *ngIf="pan" class="pdf-download"><i
+                                                                    class="fa-solid fa-file-pdf"></i> &nbsp;<a
+                                                                    href="{{pan}}"
+                                                                    download="pan.pdf">Download</a></button>
+                                                            <div class="my-2" *ngIf="!pan">
+                                                                <span class="text-danger">Not yet Uploaded...</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <button class="btn bg-theme text-light w-50"
+                                                                (click)="submitPanDocument(PanDocForm)">submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <!-- <div class="form-group">
+                                                <label class="py-2">Pan </label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input type="file" formControlName="pan" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted8 && f8['pan'].errors }" />
+                                                    <div *ngIf="submitted8 && f8['pan'].errors" class="invalid-feedback">
+                                                        <div *ngIf="f8['pan'].errors['required']">Please Upload Your Pan
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <button class="pdf-download"><i class="fa-solid fa-file-pdf"></i> Download</button>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                            <!-- <div class="form-group">
+                                                <label class="py-2">Bank Statement</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input type="file" formControlName="bankstatement" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted8 && f8['bankstatement'].errors }" />
+                                                    <div *ngIf="submitted8 && f8['bankstatement'].errors" class="invalid-feedback">
+                                                        <div *ngIf="f8['bankstatement'].errors['required']">Please Upload Your Bank Statement 
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <button id="5" type="download" class="pdf-download"><i class="fa-solid fa-file-pdf"></i> Download</button>
+                                                    </div>
+
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="form-group my-5 w-50">
+                                        <button type="submit" class="btn bg-theme text-light w-100" (click)="documentsFormSubmit()">Submit</button>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="nav-bank" role="tabpanel" aria-labelledby="nav-bank-tab">
+                    <section>
+                        <div class="row m-auto w-75 mt-2">
+                            <div class="page-title text-center">
+                                <h5>Update Bank Details here</h5>
+                            </div>
+                            <form [formGroup]="empBankForm" (ngSubmit)="bankFormSubmit()">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="py-2">Bank Account Number <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" formControlName="accountno" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted9 && f9['accountno'].errors }" />
+                                            <div *ngIf="submitted9 && f9['accountno'].errors" class="invalid-feedback">
+                                                <div *ngIf="f9['accountno'].errors['required']">
+                                                    Bank Account is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="py-2">Name On Bank Account <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" formControlName="accountantname" class="form-control"
+                                         
+                                                [ngClass]="{'is-invalid': submitted9 && f9['accountantname'].errors }" />
+                                            <div *ngIf="submitted9 && f9['accountantname'].errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f9['accountantname'].errors['required']">Name On Bank
+                                                    Account is required</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="py-2">Bank Name <span class="text-danger">*</span></label>
+                                            <input type="text" formControlName="bankname" class="form-control"
+                                      
+                                                [ngClass]="{'is-invalid': submitted9 && f9['bankname'].errors }" />
+                                            <div *ngIf="submitted9 && f9['bankname'].errors" class="invalid-feedback">
+                                                <div *ngIf="f9['bankname'].errors['required']">Bank Name is required
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="py-2">Bank Branch <span class="text-danger">*</span></label>
+                                            <input type="text" formControlName="branch" class="form-control"
+                                        
+                                                [ngClass]="{ 'is-invalid': submitted9 && f9['branch'].errors }" />
+                                            <div *ngIf="submitted9 && f9['branch'].errors" class="invalid-feedback">
+                                                <div *ngIf="f9['branch'].errors['required']">Bank Branch is required
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="py-2">IFSC Code <span class="text-danger">*</span></label>
+                                            <input type="text" formControlName="ifscno" class="form-control"
+                                          
+                                                [ngClass]="{ 'is-invalid': submitted9 && f9['ifscno'].errors }" />
+                                            <div *ngIf="submitted9 && f9['ifscno'].errors" class="invalid-feedback">
+                                                <div *ngIf="f9['ifscno'].errors['required']">IFSC Code is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group my-5 w-50">
+                                    <button type="submit" class="btn bg-theme text-light w-100">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+                <div class="tab-pane fade" id="nav-leave" role="tabpanel" aria-labelledby="nav-bank-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <section>
+                                <div class="row m-auto w-100 mt-2">
+                                    <div class="page-title text-center">
+                                        <h5>Update Leave Balances here</h5>
+                                    </div>
+                                    <form [formGroup]="empAddLeavesForm" (ngSubmit)="empAddLeaves()">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="py-2">Annual Leaves <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="number" formControlName="annualleaves"
+                                                       class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted10 && f10['annualleaves'].errors }" />
+                                                    <div *ngIf="submitted10 && f10['annualleaves'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f10['annualleaves'].errors['required']">
+                                                            Annual Leaves are required
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="py-2">Leaves Type <span
+                                                            class="text-danger">*</span></label>
+                                                    <select formControlName="leavetype" type="text" class="form-select"
+                                                        [ngClass]="{'is-invalid': submitted10 && f10['leavetype'].errors }"
+                                                        name="" id="">
+                                                        <option value="">--select--</option>
+                                                        <option value="CasualLeave">CasualLeave</option>
+                                                        <option value="PaidLeave">Paid Leave</option>
+                                                        <option value="SickLeave">Sick Leave</option>
+                                                        <option value="UnpaidLeave">Unpaid Leave</option>
+                                                        <option value="CompOff">CompOff</option>
+
+
+                                                    </select>
+                                                    <div *ngIf="submitted10 && f10['leavetype'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f10['leavetype'].errors['required']">Paid Leaves is
+                                                            required</div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="py-2">Consumed <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="number" formControlName="consumed" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted10 && f10['consumed'].errors }" />
+                                                    <div *ngIf="submitted10 && f10['consumed'].errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f10['consumed'].errors['required']">Consumed is
+                                                            required
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group my-5 w-50">
+                                            <button type="submit" class="btn bg-theme text-light w-100">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </section>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card p-3">
+                                <div class="row">
+                                    <table class="table styled-table text-center table-light">
+                                        <thead class="text-light">
+                                            <th>S.No</th>
+                                            <th>Annual Leaves</th>
+                                            <th>Leave Type</th>
+                                            <th>Consumed</th>
+                                            <th>Action</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let data of empLeavesList; let i=index">
+                                                <td>{{i+1}}</td>
+                                                <td>{{data.annualleaves}}</td>
+                                                <td>{{data.leavetype}}</td>
+                                                <td>{{data.consumed}}</td>
+                                                <td>
+                                                    <span class="edit" (click)="editLeavesData(data)"><i
+                                                            class="fa-solid fa-pen-to-square"></i></span>
+                                                    &nbsp;&nbsp;<span class="delete"
+                                                        (click)="deleteEmpLeave(data._id)"><i
+                                                            class="fa-solid fa-trash text-danger"></i></span>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <div class="text-center" *ngIf="empLeavesBoolean">
+                                        <span class="text-center text-danger">No Data Found</span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

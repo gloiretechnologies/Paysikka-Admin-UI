@@ -1,0 +1,257 @@
+<section>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-8">
+        <div class="m-auto text-center ">
+          <div class="chart-container" style="height:50vh; width:55vw">
+            <canvas id="MyChart" >{{ chart }}</canvas>
+            <div>Monthly Report</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="m-auto text-center ">
+          <div class="chart-container m-auto" style="height:35vh;padding-left: 30%; width:25vw">
+            <canvas id="MyPieChart" >{{ chart }}</canvas>
+            <div>Absentees Report</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section *ngIf="!serverIssue">
+  <div>
+    <div class="row p-0 m-0">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="px-2 py-1">
+            <h6>Total No of Employees</h6>
+          </div>
+          <div class="text-center">
+            <h5>{{empdata?.totalemployees}}</h5>
+          </div>
+          <div class="row">
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-danger">HR</h6>
+              </div>
+              <div>
+                {{empdata?.HR}}
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-success">DM</h6>
+              </div>
+              <div>
+                {{empdata?.DM}}
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-warning">Acc</h6>
+              </div>
+              <div>
+                {{empdata?.Accounts}}
+                
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-info">IT</h6>
+              </div>
+              <div>
+                {{empdata?.it}}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="px-2 py-1">
+            <h6>Regularization Requests</h6>
+          </div>
+          <div class="text-center">
+            <h5>{{regulaizre?.totalrequests}}</h5>
+          </div>
+          <div class="row">
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-danger">HR</h6>
+              </div>
+              <div>
+                {{regulaizre?.HR}}
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-success">DM</h6>
+              </div>
+              <div>
+                {{regulaizre?.DM}}
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-warning">Acc</h6>
+              </div>
+              <div>
+                {{regulaizre?.Accounts}}
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-info">IT</h6>
+              </div>
+              <div>
+                {{regulaizre?.it}}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="px-2 py-1">
+            <h6>CompOff Requests</h6>
+          </div>
+          <div class="text-center">
+            <h5>{{compoff?.totalrequests}}</h5>
+          </div>
+          <div class="row">
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-danger">HR</h6>
+              </div>
+              <div>
+                {{compoff?.HR}}
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-success">DM</h6>
+              </div>
+              <div>
+                {{compoff?.DM}}
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-warning">Acc</h6>
+              </div>
+              <div>
+                {{compoff?.Accounts}}
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-info">IT</h6>
+              </div>
+              <div>
+                {{compoff?.it}}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="px-2 py-1">
+            <h6>Leaves Requests</h6>
+          </div>
+          <div class="text-center">
+            <h5>{{leaves?.totalrequests}}</h5>
+          </div>
+          <div class="row">
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-danger">HR</h6>
+              </div>
+              <div>
+                {{leaves?.HR}}
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-success">DM</h6>
+              </div>
+              <div>
+                {{leaves?.DM}}
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-warning">Acc</h6>
+              </div>
+              <div>
+                {{leaves?.Accounts}}
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div>
+               <h6 class="text-info">IT</h6>
+              </div>
+              <div>
+                {{leaves?.it}}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="mt-3">
+    <div class="row p-0 m-0">
+      <div class="col-md-6">
+        <!-- <div class="card-table p-3">
+          <h6>Upcoming Birthdays</h6>
+          <div class="row">
+              <table class="table styled-table text-center table-light">
+                  <thead class="text-light">
+                      <th>S.No</th>
+                      <th>Person Name</th>
+                      <th>Date</th>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>1</td>
+                          <td>Naresh</td>
+                          <td>12/05/2023</td>
+                      </tr>
+                      <tr>
+                        <td>1</td>
+                        <td>Naresh</td>
+                        <td>12/05/2023</td>
+                    </tr>
+                  </tbody>
+              </table>
+              <div class="text-center" *ngIf="expBoolean">
+                  <span class="text-center text-danger">No Data Found</span>
+
+              </div>
+
+          </div>
+
+      </div> -->
+
+
+      </div>
+     
+      
+     
+      
+    </div>
+  </div>
+
+</section>
+<app-server-issue *ngIf="serverIssue"></app-server-issue>

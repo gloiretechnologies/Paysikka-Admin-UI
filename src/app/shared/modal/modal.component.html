@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h6 class="modal-title">Please Enter Note Here</h6>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+       <form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+        <textarea [ngClass]="{ 'is-invalid': submitted && f['note'].errors }" name="" class="form-control" id="" cols="50" rows="5" formControlName="note">
+        </textarea>
+        <div *ngIf="submitted && f['note'].errors" class="invalid-feedback">
+            <div *ngIf="f['note'].errors['required']">Note is required</div>
+        </div>
+       </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-outline-dark" (click)="popupSubmit()">submit</button>
+  </div>

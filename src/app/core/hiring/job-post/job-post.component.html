@@ -1,0 +1,124 @@
+<section>
+  <div class="row w-75 m-auto mt-5">
+    <div class="page-title text-center">
+      <h5>Add Job Here</h5>
+    </div>
+    <form [formGroup]="employePostForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="py-2">Title <span class="text-danger">*</span></label>
+            <input type="text" formControlName="title" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['title'].errors }" placeholder="Ex.Angular Developer" />
+            <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+              <div *ngIf="f['title'].errors['required']">Title is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="py-2">Positions <span class="text-danger">*</span></label>
+            <input type="text" formControlName="positions" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['positions'].errors }" placeholder="Ex.5"/>
+            <div *ngIf="submitted && f['positions'].errors" class="invalid-feedback">
+              <div *ngIf="f['positions'].errors['required']">Position is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="py-2">Priority</label>
+            <select formControlName="priority" class="form-select" [ngClass]="{ 'is-invalid': submitted && f['priority'].errors }" name="" id="">
+              <option value="">--select--</option>
+              <option value="high" selected>High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+           
+            <div *ngIf="submitted && f['priority'].errors" class="invalid-feedback">
+              <div *ngIf="f['priority'].errors['required']">Select Priority</div>
+            </div>
+          </div>
+          <input type="hidden" formControlName="orgid">
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="py-2">Email <span class="text-danger">*</span></label>
+            <input type="text" formControlName="email" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" placeholder="Ex.admin@gmail.com"/>
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+              <div *ngIf="f['email'].errors['required']">Email is required</div>
+              <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="py-2">Status <span class="text-danger">*</span></label>
+            <select class="form-select" [ngClass]="{ 'is-invalid': submitted && f['status'].errors }"formControlName="status" name="" id="">
+              <option value="" >--select--</option>
+              <option value="true" selected>Active</option>
+              <option value="false">Inactive</option>
+            </select>
+            <!-- error block -->
+            <div *ngIf="submitted && f['status'].errors" class="invalid-feedback">
+              <div *ngIf="f['status'].errors['required']">Status is required</div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+      
+          <!-- <div class="form-group">
+            <label class="py-2">Job Responsibility</label>
+            <input type="text" cols="20" rows="6" formControlName="responsibilities" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['responsibilities'].errors }">
+            <div *ngIf="submitted && f['responsibilities'].errors" class="invalid-feedback">
+              <div *ngIf="f['responsibilities'].errors['required']">Responsibilty is required</div>
+              <div *ngIf="f['responsibilities'].errors['minlength']">
+                Responsibilty must be at least 10 characters
+              </div>
+              <div *ngIf="f['responsibilities'].errors['maxlength']">
+                Responsibilty must not exceed 40 characters
+              </div>
+            </div>
+          </div> -->
+        
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="py-2">Job Description <span class="text-danger">*</span></label>
+            <div class="content">
+              <div class="NgxEditor__Wrapper" >
+                <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+                <ngx-editor [editor]="editor"   [placeholder]="'Type here...'" type="text" cols="20" rows="6" formControlName="jobdescription" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['jobdescription'].errors }" ></ngx-editor>
+              </div>
+    
+              <div *ngIf="submitted && f['jobdescription'].errors" class="invalid-feedback">
+                <div *ngIf="f['jobdescription'].errors['required']">Description is required</div>
+                <div *ngIf="f['jobdescription'].errors['minlength']">
+                  Description must be at least 10 characters
+                </div>
+                <!-- <div *ngIf="f['jobdescription'].errors['maxlength']">
+                  Description must not exceed 40 characters
+                </div> -->
+              </div>
+    
+            </div>
+            <div *ngIf="submitted && f['jobdescription'].errors" class="invalid-feedback">
+              <div *ngIf="f['jobdescription'].errors['required']">Description is required</div>
+              <div *ngIf="f['jobdescription'].errors['minlength']">
+                Description must be at least 10 characters
+              </div>
+              <!-- <div *ngIf="f['jobdescription'].errors['maxlength']">
+                Description must not exceed 40 characters
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mt-5 mb-5">
+        <button type="submit" class="btn bg-theme text-light w-50">Submit</button>
+        <!-- <button type="button" (click)="onReset()" class="btn btn-warning float-right">
+          Reset
+        </button> -->
+      </div>
+    </form>
+  </div>
+</section>
+<!-- <button (click)="showSuccess()">check</button> -->

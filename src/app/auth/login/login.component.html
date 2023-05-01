@@ -1,0 +1,45 @@
+<div class="container" id="container">
+    <div class="form-container log-in-container">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <h2>Login <i class="fa-solid fa-right-to-bracket"></i></h2>
+            <div class="social-container">
+                
+            </div>
+
+            <input type="text" placeholder="Email " formControlName="email" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">Email is required</div>
+            </div>
+            <div class="input-eye-password">
+                <input [type]="showPassword ? 'text': 'password'" placeholder="Password" formControlName="password" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+                <span class="">
+                    <span class="toggle"  *ngIf="showPassword" (click)="showHidePassword()"><i class="fa-solid fa-eye"></i></span>
+                    <span class="toggle" *ngIf="!showPassword" (click)="showHidePassword()"><i class="fa-solid fa-eye-slash"></i></span>
+                </span>
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                <div *ngIf="f['password'].errors['required']">Password is required</div>
+            </div>
+            </div>
+            <!-- <a href="#">Forgot password?</a> --> 
+            <button type="submit">Login</button>
+            <!-- <span style="margin-top: 40px;">don't have account..? <span routerLink="/register" style="cursor: pointer;color:#41ff80;"><b><i class="fa-solid fa-user-plus"></i> signup now</b></span> </span> -->
+
+        </form>
+    </div>
+
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <h3>Verify your credentials and get access</h3>
+                <span>
+                    <h4>to</h4>
+                </span>
+                <p>The Human Resource Management Solution (HRMS) Application to simplifies and automates HR functions,
+                    such as recruitment,
+                    employee management, leave, attendance, separation, and many. </p>
+            </div>
+        </div>
+    </div>
+    

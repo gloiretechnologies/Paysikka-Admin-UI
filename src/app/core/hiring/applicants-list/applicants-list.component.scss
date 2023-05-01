@@ -1,0 +1,140 @@
+// .table{
+//     border: 1px solid black;
+// }
+// .table tr th{
+//     border: 1px solid black;
+// }
+// .table tr td{
+//     border: 1px solid black;
+// }
+.pdfButton{
+    background-color:#e63946;
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+// .headcol{
+    
+//     background-color: #202A44 ;
+//     color: #fff;
+// }
+// ----------------My TAble--------------
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    margin-top: 0 !important;
+}
+.styled-table thead tr {
+    background-color: #202A44;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 5px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #202A44;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+select{
+    option{
+        border:1px solid red;
+            
+    }
+}
+
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }  
+
+
+
+.table-search{
+    position: relative !important;
+    width: 100%;
+}
+.fa-magnifying-glass{
+    position: absolute !important;
+	top: 10px;
+	left: 65%;
+    font-size: 20px;
+    color: #202A44;
+}
+
+
+.resetbtn{
+    background-color: #e63946;
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+
+///
+
+.class_one{
+    background-color: #FF8080;
+    color: white;
+}
+.class_two{
+    background-color: #90EE90;
+    color: white;
+}
+.class_three{
+    background-color: #e0c84e;
+    color: white;
+}
+
+.model{
+    width: 15px;
+    height: 15px;
+}
+
+.timeline-btn{
+    font-size: 10px;
+    border: none;
+    padding: 2px 5px;
+}
+.fa-clock{
+    font-size: 12px;
+    margin: 2px 0px;
+    padding: 2px 5px;
+}

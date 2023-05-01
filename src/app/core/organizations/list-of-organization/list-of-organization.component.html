@@ -1,0 +1,29 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 w-100 my-5" >
+               <!-- -------------------MyTable-------------------- -->
+                  <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Name Of organization</th>
+                            <th>Logo</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of organizationData | paginate: { itemsPerPage: 5,currentPage: q };let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{data.organization_name}}</td>
+                            <td><img src="{{data.organization_logo}}" alt="" class="org-img"></td>
+                            <th><span><Button  (click)="organizationDeleteData(data.organization_id)"><i class="fa-solid fa-trash text-danger"></i></Button ></span>&nbsp;&nbsp;<span><button routerLink="/organizations/update-organization/{{data.organization_id  }}"><i class="fa-solid fa-pen-to-square"></i></button></span></th>
+                        </tr>
+                        <!-- and so on... -->
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="q = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>

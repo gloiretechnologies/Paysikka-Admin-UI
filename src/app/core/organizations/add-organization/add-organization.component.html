@@ -1,0 +1,28 @@
+<section>
+    <div class="row w-75 m-auto mt-5">
+        <div class="page-title text-center">
+            <h5>Add organization</h5>
+        </div>
+        <form [formGroup]="AddOrganisationForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label class="my-2">Organisation Name</label>
+                <input type="text" formControlName="organization_name" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f['organization_name'].errors }" />
+                <div *ngIf="submitted && f['organization_name'].errors" class="invalid-feedback">
+                    <div *ngIf="f['organization_name'].errors['required']">Organisation Name is required</div>
+                </div>
+            </div>
+            <div class="form-group mt-2">
+                <label class="my-2">Upload Image</label>
+                <input type="file" accept="image/*" (change)="onFileChange($event)" formControlName="organization_logo" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f['organization_logo'].errors }" />
+                <div *ngIf="submitted && f['organization_logo'].errors" class="invalid-feedback">
+                    <div *ngIf="f['organization_logo'].errors['required']">image is required</div>
+                </div>
+            </div>
+            <div class="form-group mt-5">
+                <button class="w-50" type="submit" class="btn bg-theme text-light">Submit</button>
+            </div>
+        </form>
+    </div>
+  </section>

@@ -1,0 +1,170 @@
+<section>
+    <div class="row p-0 m-0 mt-3">
+        <div class="col-md-3">
+            <!-- <button (click)="addVisible = !addVisible" class="btn redButton" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <span *ngIf="!addVisible">Create Admin</span>
+                        <span *ngIf="addVisible">Close Create</span>
+                    </button> -->
+            <button (click)="addVisible = !addVisible" class="btn redButton">
+                <span *ngIf="!addVisible">Create Admin</span>
+                <span *ngIf="addVisible">Close Create</span>
+            </button>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 w-100 my-2">
+                <!---------------------MyTable---------------------->
+                <table class="styled-table">
+                    <thead>
+                        <tr style="margin: 0;padding: 0;">
+                            <th>S.No</th>
+                            <th>Dept ID</th>
+                            <th>Dept Name</th>
+                            <th>Created on</th>
+                            <th>Updated on</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr [formGroup]="adminForm" *ngIf="addVisible">
+                            <td>
+                                <button class="btn redButton" (click)="addVisible =!addVisible"><i
+                                        class="fa-solid fa-xmark"></i></button>
+                            </td>
+                            <td></td>
+                            <td>
+                                <input type="text" class="form-control" formControlName="title"
+                                    [ngClass]="{'is-invalid':submitted && f['title'].errors}" placeholder="Enter Title"
+                                    id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <div *ngIf="f['title'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['title'].errors['required']">*Title Required</div>
+                                </div>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button class="btn bg-theme text-light" (click)="postadmin()"><i
+                                        class="fa-solid fa-plus"></i></button>
+                            </td>
+
+                        </tr>
+                        <ng-container [formGroup]="eeadminForm">
+                            <tr (click)="removeEdit(data._id)" *ngFor="let data of allAdmin ;let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{data.roleid}}</td>
+                                <td (dblclick)="editAdmin(data._id,data)">
+                                    <span *ngIf="data._id !== clickedID">{{data.title}}</span>
+                                    <span *ngIf="data._id == clickedID">
+                                        <input type="hidden" formControlName="roleid">
+                                        <input (keypress)="updateAdmin($event)" type="text" class="form-control" formControlName="title"
+                                            [ngClass]="{'is-invalid':submitted && ff['title'].errors}"
+                                            placeholder="Enter Title" id="exampleInputEmail1"
+                                            aria-describedby="emailHelp">
+                                        <div *ngIf="ff['title'].errors" class="invalid-feedback">
+                                            <div *ngIf="ff['title'].errors['required']">*Title Required</div>
+                                        </div>
+                                    </span>
+                                </td>
+                                <td>{{data.createdAt | date}}</td>
+                                <td>{{data.updatedAt |date}}</td>
+                                <td>
+                                    <button class="border-0 bg-light" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModalEdit" (click)="editadmin(data)"><i
+                                            class="fa-solid fa-pen-to-square"></i></button>&nbsp;
+                                    <button class="border-0 bg-light" type="button" data-bs-target="#exampleModal"
+                                        (click)="deleteadmin(data.roleid)"><i class="fa-solid fa-trash"></i></button>
+
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+                <!-- <div *ngIf="noData == true" class="text-center mt-5">
+                    <span class="text-center text-danger">No Data Found</span>
+                </div>
+                <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)"
+                    *ngIf="noData == false">
+                </pagination-controls> -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Create Designation -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">#Create Admin</h5>
+                <button type="button" class="btn-close btn-light" style="background-color:#fff" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body container">
+                <form class="mt-4" [formGroup]="adminForm" (ngSubmit)="postadmin()">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="exampleInputEmail1" class="form-label"> <b>Title</b></label>
+                            <input type="text" class="form-control" formControlName="title"
+                                [ngClass]="{'is-invalid':submitted && f['title'].errors}" placeholder="Enter Title"
+                                id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <div *ngIf="f['title'].errors" class="invalid-feedback">
+                                <div *ngIf="f['title'].errors['required']">*Title Required</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger btn-sm"
+                            data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-outline-success btn-sm">Save</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Edit Designation -->
+<div class="modal fade" id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">#Edit Admin</h5>
+                <button type="button" class="btn-close btn-light" style="background-color:#fff" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body container">
+                <form class="mt-4" [formGroup]="eeadminForm" (ngSubmit)="eepostadmin()">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="exampleInputEmail1" class="form-label"> <b>Title</b></label>
+                            <input type="hidden" formControlName="roleid">
+                            <input type="text" class="form-control" formControlName="title"
+                                [ngClass]="{'is-invalid':submitted && ff['title'].errors}" placeholder="Enter Title"
+                                id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <div *ngIf="ff['title'].errors" class="invalid-feedback">
+                                <div *ngIf="ff['title'].errors['required']">*Title Required</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger btn-sm"
+                            data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-outline-success btn-sm">Save</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

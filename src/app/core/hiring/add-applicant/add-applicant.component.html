@@ -1,0 +1,1001 @@
+<section>
+    
+    <div class="main m-auto mt-5">
+        <div class="text-center"><h5>Add Applicant</h5></div>
+        <form [formGroup]="addApplicantForm" (ngSubmit)="submit()">
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <label class="py-2" for="">Full Name</label>
+                        <input class="form-control" type="text" formControlName="fullname" [ngClass]="{'is-invalid': submitted && f['fullname'].errors }">
+                        <div *ngIf="submitted && f['fullname'].errors" class="invalid-feedback">
+                            <div *ngIf="f['fullname'].errors['required']">Full Name is required
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="py-2" for="">Any Suggestions</label>
+                        <input class="form-control" type="text" formControlName="anysuggestions" [ngClass]="{'is-invalid': submitted && f['anysuggestions'].errors }">
+                        <div *ngIf="submitted && f['anysuggestions'].errors" class="invalid-feedback">
+                            <div *ngIf="f['anysuggestions'].errors['required']">anysuggestions is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">The particular thing you observed when you entered our office</label>
+                        <input class="form-control" type="text" formControlName="typeofconveyance" [ngClass]="{'is-invalid': submitted && f['particularthingobserved'].errors }">
+                        <div *ngIf="submitted && f['particularthingobserved'].errors" class="invalid-feedback">
+                            <div *ngIf="f['particularthingobserved'].errors['required']">particularthingobserved Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Total work experiance</label>
+                        <input class="form-control" type="text" formControlName="totalworp" [ngClass]="{'is-invalid': submitted && f['totalworp'].errors }">
+                        <div *ngIf="submitted && f['totalworp'].errors" class="invalid-feedback">
+                            <div *ngIf="f['totalworp'].errors['required']">totalworp is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">From</label>
+                        <input class="form-control" type="text" formControlName="from" [ngClass]="{'is-invalid': submitted && f['from'].errors }">
+                        <div *ngIf="submitted && f['from'].errors" class="invalid-feedback">
+                            <div *ngIf="f['from'].errors['required']">from Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label class="py-2">Primary Contact</label>
+                        <input class="form-control" type="text" formControlName="primarycontact" [ngClass]="{'is-invalid': submitted && f['primarycontact'].errors }">
+                        <div *ngIf="submitted && f['primarycontact'].errors" class="invalid-feedback">
+                            <div *ngIf="f['primarycontact'].errors['required']">Full Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Alternative contact</label>
+                        <input class="form-control" type="text" formControlName="alternatecontact" [ngClass]="{'is-invalid': submitted && f['alternatecontact'].errors }">
+                        <div *ngIf="submitted && f['alternatecontact'].errors" class="invalid-feedback">
+                            <div *ngIf="f['alternatecontact'].errors['required']">Full Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2">How did you come to know about our company</label>
+                        <input class="form-control" type="text" formControlName="knowourcompany" [ngClass]="{'is-invalid': submitted && f['knowourcompany'].errors }">
+                        <div *ngIf="submitted && f['knowourcompany'].errors" class="invalid-feedback">
+                            <div *ngIf="f['knowourcompany'].errors['required']">Full Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Job Role</label>
+                        <input class="form-control" type="text" formControlName="jobrole" [ngClass]="{'is-invalid': submitted && f['jobrole'].errors }">
+                        <div *ngIf="submitted && f['jobrole'].errors" class="invalid-feedback">
+                            <div *ngIf="f['jobrole'].errors['required']">Full Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Browse CV from drive (Upload below 60kb)</label>
+                        <input class="form-control" type="file" (change)="onFileChange($event)" formControlName="resume" [ngClass]="{'is-invalid': submitted && f['resume'].errors }">
+                        <div *ngIf="submitted && f['resume'].errors" class="invalid-feedback">
+                            <div *ngIf="f['resume'].errors['required']">Full Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="my-3"><h6>Present emoluments</h6></div>
+                <div class="col-md-6">
+                    <div>
+                        <label class="py-2" for="">Basic Salary</label>
+                        <input class="form-control" type="text" formControlName="basicsalary" [ngClass]="{'is-invalid': submitted && f['basicsalary'].errors }">
+                        <div *ngIf="submitted && f['basicsalary'].errors" class="invalid-feedback">
+                            <div *ngIf="f['basicsalary'].errors['required']">basicsalary is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Net emoluments</label>
+                        <input class="form-control" type="text" formControlName="netemoluments" [ngClass]="{'is-invalid': submitted && f['netemoluments'].errors }">
+                        <div *ngIf="submitted && f['netemoluments'].errors" class="invalid-feedback">
+                            <div *ngIf="f['netemoluments'].errors['required']">Net emoluments is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Type of CONVEYANCE YOU OWN (Vehicle)</label>
+                        <input class="form-control" type="text" formControlName="typeofconveyance" [ngClass]="{'is-invalid': submitted && f['typeofconveyance'].errors }">
+                        <div *ngIf="submitted && f['typeofconveyance'].errors" class="invalid-feedback">
+                            <div *ngIf="f['typeofconveyance'].errors['required']">typeofconveyance Name is required
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label class="py-2" for="">Benefits and perks</label>
+                        <input class="form-control" type="text" formControlName="benefitsandperks" [ngClass]="{'is-invalid': submitted && f['benefitsandperks'].errors }">
+                        <div *ngIf="submitted && f['benefitsandperks'].errors" class="invalid-feedback">
+                            <div *ngIf="f['benefitsandperks'].errors['required']">Benefits and perks is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Gross emoluments</label>
+                        <input class="form-control" type="text" formControlName="grossemoluments" [ngClass]="{'is-invalid': submitted && f['grossemoluments'].errors }">
+                        <div *ngIf="submitted && f['grossemoluments'].errors" class="invalid-feedback">
+                            <div *ngIf="f['grossemoluments'].errors['required']">Gross emoluments is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5">
+                <h6>Work  Experience</h6>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Organization Name</label>
+                        <input class="form-control" type="text" formControlName="organizationname" [ngClass]="{'is-invalid': submitted && f['organizationname'].errors }">
+                        <div *ngIf="submitted && f['organizationname'].errors" class="invalid-feedback">
+                            <div *ngIf="f['organizationname'].errors['required']">Organization Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Designation</label>
+                        <input class="form-control" type="text" formControlName="designation" [ngClass]="{'is-invalid': submitted && f['designation'].errors }">
+                        <div *ngIf="submitted && f['designation'].errors" class="invalid-feedback">
+                            <div *ngIf="f['designation'].errors['required']">Designation is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Reporting To</label>
+                        <input class="form-control" type="text" formControlName="reportingto" [ngClass]="{'is-invalid': submitted && f['reportingto'].errors }">
+                        <div *ngIf="submitted && f['reportingto'].errors" class="invalid-feedback">
+                            <div *ngIf="f['reportingto'].errors['required']">Reporting To is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">From To</label>
+                        <input class="form-control" type="text" formControlName="fromTo" [ngClass]="{'is-invalid': submitted && f['fromTo'].errors }">
+                        <div *ngIf="submitted && f['fromTo'].errors" class="invalid-feedback">
+                            <div *ngIf="f['fromTo'].errors['required']">From To is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div>
+                        <label class="py-2" for="">Experiance</label>
+                        <input class="form-control" type="text" formControlName="expinyears" [ngClass]="{'is-invalid': submitted && f['expinyears'].errors }">
+                        <div *ngIf="submitted && f['expinyears'].errors" class="invalid-feedback">
+                            <div *ngIf="f['expinyears'].errors['required']">Experiance in years is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div>
+                        <label class="py-2" for="">Salary</label>
+                        <input class="form-control" type="text" formControlName="salary" [ngClass]="{'is-invalid': submitted && f['salary'].errors }">
+                        <div *ngIf="submitted && f['salary'].errors" class="invalid-feedback">
+                            <div *ngIf="f['salary'].errors['required']">Salary is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Main Work</label>
+                        <input class="form-control" type="text" formControlName="mainWork" [ngClass]="{'is-invalid': submitted && f['mainWork'].errors }">
+                        <div *ngIf="submitted && f['mainWork'].errors" class="invalid-feedback">
+                            <div *ngIf="f['mainWork'].errors['required']">Main Work is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                <!-- work exp 2 -->
+            <div class="row">
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Organization Name</label>
+                        <input class="form-control" type="text" formControlName="organizationname1" [ngClass]="{'is-invalid': submitted && f['organizationname1'].errors }">
+                        <div *ngIf="submitted && f['organizationname1'].errors" class="invalid-feedback">
+                            <div *ngIf="f['organizationname1'].errors['required']">Organization Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Designation</label>
+                        <input class="form-control" type="text" formControlName="designation1" [ngClass]="{'is-invalid': submitted && f['designation1'].errors }">
+                        <div *ngIf="submitted && f['designation1'].errors" class="invalid-feedback">
+                            <div *ngIf="f['designation1'].errors['required']">Designation is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Reporting To</label>
+                        <input class="form-control" type="text" formControlName="reportingto1" [ngClass]="{'is-invalid': submitted && f['reportingto1'].errors }">
+                        <div *ngIf="submitted && f['reportingto1'].errors" class="invalid-feedback">
+                            <div *ngIf="f['reportingto1'].errors['required']">Reporting To is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">From To</label>
+                        <input class="form-control" type="text" formControlName="fromTo1" [ngClass]="{'is-invalid': submitted && f['fromTo1'].errors }">
+                        <div *ngIf="submitted && f['fromTo1'].errors" class="invalid-feedback">
+                            <div *ngIf="f['fromTo1'].errors['required']">From To is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div>
+                        <label class="py-2" for="">Experiance</label>
+                        <input class="form-control" type="text" formControlName="expinyears1" [ngClass]="{'is-invalid': submitted && f['expinyears1'].errors }">
+                        <div *ngIf="submitted && f['expinyears1'].errors" class="invalid-feedback">
+                            <div *ngIf="f['expinyears1'].errors['required']">Experiance in years is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div>
+                        <label class="py-2" for="">Salary</label>
+                        <input class="form-control" type="text" formControlName="salary1" [ngClass]="{'is-invalid': submitted && f['salary1'].errors }">
+                        <div *ngIf="submitted && f['salary1'].errors" class="invalid-feedback">
+                            <div *ngIf="f['salary1'].errors['required']">Salary is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Main Work</label>
+                        <input class="form-control" type="text" formControlName="mainWork1" [ngClass]="{'is-invalid': submitted && f['mainWork1'].errors }">
+                        <div *ngIf="submitted && f['mainWork1'].errors" class="invalid-feedback">
+                            <div *ngIf="f['mainWork1'].errors['required']">Main Work is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Organization Name</label>
+                        <input class="form-control" type="text" formControlName="organizationname2" [ngClass]="{'is-invalid': submitted && f['organizationname2'].errors }">
+                        <div *ngIf="submitted && f['organizationname2'].errors" class="invalid-feedback">
+                            <div *ngIf="f['organizationname2'].errors['required']">Organization Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Designation</label>
+                        <input class="form-control" type="text" formControlName="designation2" [ngClass]="{'is-invalid': submitted && f['designation2'].errors }">
+                        <div *ngIf="submitted && f['designation2'].errors" class="invalid-feedback">
+                            <div *ngIf="f['designation2'].errors['required']">Designation is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Reporting To</label>
+                        <input class="form-control" type="text" formControlName="reportingto2" [ngClass]="{'is-invalid': submitted && f['reportingto2'].errors }">
+                        <div *ngIf="submitted && f['reportingto2'].errors" class="invalid-feedback">
+                            <div *ngIf="f['reportingto2'].errors['required']">Reporting To is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">From To</label>
+                        <input class="form-control" type="text" formControlName="fromTo2" [ngClass]="{'is-invalid': submitted && f['fromTo2'].errors }">
+                        <div *ngIf="submitted && f['fromTo2'].errors" class="invalid-feedback">
+                            <div *ngIf="f['fromTo2'].errors['required']">From To is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div>
+                        <label class="py-2" for="">Experiance</label>
+                        <input class="form-control" type="text" formControlName="expinyears2" [ngClass]="{'is-invalid': submitted && f['expinyears2'].errors }">
+                        <div *ngIf="submitted && f['expinyears2'].errors" class="invalid-feedback">
+                            <div *ngIf="f['expinyears2'].errors['required']">Experiance in years is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div>
+                        <label class="py-2" for="">Salary</label>
+                        <input class="form-control" type="text" formControlName="salary2" [ngClass]="{'is-invalid': submitted && f['salary2'].errors }">
+                        <div *ngIf="submitted && f['salary2'].errors" class="invalid-feedback">
+                            <div *ngIf="f['salary2'].errors['required']">Salary is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Main Work</label>
+                        <input class="form-control" type="text" formControlName="mainWork2" [ngClass]="{'is-invalid': submitted && f['mainWork2'].errors }">
+                        <div *ngIf="submitted && f['mainWork2'].errors" class="invalid-feedback">
+                            <div *ngIf="f['mainWork2'].errors['required']">Main Work is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Organization Name</label>
+                        <input class="form-control" type="text" formControlName="organizationname3" [ngClass]="{'is-invalid': submitted && f['organizationname3'].errors }">
+                        <div *ngIf="submitted && f['organizationname3'].errors" class="invalid-feedback">
+                            <div *ngIf="f['organizationname3'].errors['required']">Organization Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Designation</label>
+                        <input class="form-control" type="text" formControlName="designation3" [ngClass]="{'is-invalid': submitted && f['designation3'].errors }">
+                        <div *ngIf="submitted && f['designation3'].errors" class="invalid-feedback">
+                            <div *ngIf="f['designation3'].errors['required']">Designation is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Reporting To</label>
+                        <input class="form-control" type="text" formControlName="reportingto3" [ngClass]="{'is-invalid': submitted && f['reportingto3'].errors }">
+                        <div *ngIf="submitted && f['reportingto3'].errors" class="invalid-feedback">
+                            <div *ngIf="f['reportingto3'].errors['required']">Reporting To is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">From To</label>
+                        <input class="form-control" type="text" formControlName="fromTo3" [ngClass]="{'is-invalid': submitted && f['fromTo3'].errors }">
+                        <div *ngIf="submitted && f['fromTo3'].errors" class="invalid-feedback">
+                            <div *ngIf="f['fromTo3'].errors['required']">From To is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div>
+                        <label class="py-2" for="">Experiance</label>
+                        <input class="form-control" type="text" formControlName="expinyears3" [ngClass]="{'is-invalid': submitted && f['expinyears3'].errors }">
+                        <div *ngIf="submitted && f['expinyears3'].errors" class="invalid-feedback">
+                            <div *ngIf="f['expinyears3'].errors['required']">Experiance in years is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div>
+                        <label class="py-2" for="">Salary</label>
+                        <input class="form-control" type="text" formControlName="salary3" [ngClass]="{'is-invalid': submitted && f['salary3'].errors }">
+                        <div *ngIf="submitted && f['salary3'].errors" class="invalid-feedback">
+                            <div *ngIf="f['salary3'].errors['required']">Salary is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Main Work</label>
+                        <input class="form-control" type="text" formControlName="mainWork3" [ngClass]="{'is-invalid': submitted && f['mainWork3'].errors }">
+                        <div *ngIf="submitted && f['mainWork3'].errors" class="invalid-feedback">
+                            <div *ngIf="f['mainWork3'].errors['required']">Main Work is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Organization Name</label>
+                        <input class="form-control" type="text" formControlName="organizationname4" [ngClass]="{'is-invalid': submitted && f['organizationname4'].errors }">
+                        <div *ngIf="submitted && f['organizationname4'].errors" class="invalid-feedback">
+                            <div *ngIf="f['organizationname4'].errors['required']">Organization Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Designation</label>
+                        <input class="form-control" type="text" formControlName="designation4" [ngClass]="{'is-invalid': submitted && f['designation4'].errors }">
+                        <div *ngIf="submitted && f['designation4'].errors" class="invalid-feedback">
+                            <div *ngIf="f['designation4'].errors['required']">Designation is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Reporting To</label>
+                        <input class="form-control" type="text" formControlName="reportingto4" [ngClass]="{'is-invalid': submitted && f['reportingto4'].errors }">
+                        <div *ngIf="submitted && f['reportingto4'].errors" class="invalid-feedback">
+                            <div *ngIf="f['reportingto4'].errors['required']">Reporting To is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">From To</label>
+                        <input class="form-control" type="text" formControlName="fromTo4" [ngClass]="{'is-invalid': submitted && f['fromTo4'].errors }">
+                        <div *ngIf="submitted && f['fromTo4'].errors" class="invalid-feedback">
+                            <div *ngIf="f['fromTo4'].errors['required']">From To is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div>
+                        <label class="py-2" for="">Experiance</label>
+                        <input class="form-control" type="text" formControlName="expinyears4" [ngClass]="{'is-invalid': submitted && f['expinyears4'].errors }">
+                        <div *ngIf="submitted && f['expinyears4'].errors" class="invalid-feedback">
+                            <div *ngIf="f['expinyears4'].errors['required']">Experiance in years is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div>
+                        <label class="py-2" for="">Salary</label>
+                        <input class="form-control" type="text" formControlName="salary4" [ngClass]="{'is-invalid': submitted && f['salary4'].errors }">
+                        <div *ngIf="submitted && f['salary4'].errors" class="invalid-feedback">
+                            <div *ngIf="f['salary4'].errors['required']">Salary is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Main Work</label>
+                        <input class="form-control" type="text" formControlName="mainWork4" [ngClass]="{'is-invalid': submitted && f['mainWork4'].errors }">
+                        <div *ngIf="submitted && f['mainWork4'].errors" class="invalid-feedback">
+                            <div *ngIf="f['mainWork4'].errors['required']">Main Work is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="mt-3">
+                    <h6>Personal Details</h6>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label class="py-2" for="">Father or husband name</label>
+                        <input class="form-control" type="text" formControlName="fatherorhusbandname" [ngClass]="{'is-invalid': submitted && f['fatherorhusbandname'].errors }">
+                        <div *ngIf="submitted && f['fatherorhusbandname'].errors" class="invalid-feedback">
+                            <div *ngIf="f['fatherorhusbandname'].errors['required']">Father or Husband Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Date Of birth</label>
+                        <input class="form-control" type="text" formControlName="dateOfbirth" [ngClass]="{'is-invalid': submitted && f['dateOfbirth'].errors }">
+                        <div *ngIf="submitted && f['dateOfbirth'].errors" class="invalid-feedback">
+                            <div *ngIf="f['dateOfbirth'].errors['required']">Date Of birth is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Present Address</label>
+                        <input class="form-control" type="text" formControlName="presentaddress" [ngClass]="{'is-invalid': submitted && f['presentaddress'].errors }">
+                        <div *ngIf="submitted && f['presentaddress'].errors" class="invalid-feedback">
+                            <div *ngIf="f['presentaddress'].errors['required']">Present is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Permanent Address</label>
+                        <input class="form-control" type="text" formControlName="permanentaddress" [ngClass]="{'is-invalid': submitted && f['permanentaddress'].errors }">
+                        <div *ngIf="submitted && f['permanentaddress'].errors" class="invalid-feedback">
+                            <div *ngIf="f['permanentaddress'].errors['required']">Permanent Address is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Aadhar Number </label>
+                        <input class="form-control" type="text" formControlName="aadharno" [ngClass]="{'is-invalid': submitted && f['aadharno'].errors }">
+                        <div *ngIf="submitted && f['aadharno'].errors" class="invalid-feedback">
+                            <div *ngIf="f['aadharno'].errors['required']">Aadhar Number is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Pan Number</label>
+                        <input class="form-control" type="text" formControlName="panno" [ngClass]="{'is-invalid': submitted && f['panno'].errors }">
+                        <div *ngIf="submitted && f['panno'].errors" class="invalid-feedback">
+                            <div *ngIf="f['panno'].errors['required']">Pan Number is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Languages Read</label>
+                        <input class="form-control" type="text" formControlName="languagesread" [ngClass]="{'is-invalid': submitted && f['languagesread'].errors }">
+                        <div *ngIf="submitted && f['languagesread'].errors" class="invalid-feedback">
+                            <div *ngIf="f['languagesread'].errors['required']">Languages Read is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Languages Speak</label>
+                        <input class="form-control" type="text" formControlName="languagespeak" [ngClass]="{'is-invalid': submitted && f['languagespeak'].errors }">
+                        <div *ngIf="submitted && f['languagespeak'].errors" class="invalid-feedback">
+                            <div *ngIf="f['languagespeak'].errors['required']">Languages Speak is required
+                            </div>
+                        </div>
+                    </div>
+        
+        
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label class="py-2" for="">Marital Status</label>
+                        <input class="form-control" type="text" formControlName="maritalStatus" [ngClass]="{'is-invalid': submitted && f['maritalStatus'].errors }">
+                        <div *ngIf="submitted && f['maritalStatus'].errors" class="invalid-feedback">
+                            <div *ngIf="f['maritalStatus'].errors['required']">Marital Status is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Guardian Contact Number</label>
+                        <input class="form-control" type="text" formControlName="guardiancontactnumber" [ngClass]="{'is-invalid': submitted && f['guardiancontactnumber'].errors }">
+                        <div *ngIf="submitted && f['guardiancontactnumber'].errors" class="invalid-feedback">
+                            <div *ngIf="f['guardiancontactnumber'].errors['required']">Guardian Contact Number is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Pin 1</label>
+                        <input class="form-control" type="text" formControlName="pin1" [ngClass]="{'is-invalid': submitted && f['pin1'].errors }">
+                        <div *ngIf="submitted && f['pin1'].errors" class="invalid-feedback">
+                            <div *ngIf="f['pin1'].errors['required']">Pin 1 is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Pin 2</label>
+                        <input class="form-control" type="text" formControlName="pin2" [ngClass]="{'is-invalid': submitted && f['pin2'].errors }">
+                        <div *ngIf="submitted && f['pin2'].errors" class="invalid-feedback">
+                            <div *ngIf="f['pin2'].errors['required']">Pin 2 is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Email</label>
+                        <input class="form-control" type="text" formControlName="email" [ngClass]="{'is-invalid': submitted && f['email'].errors }">
+                        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                            <div *ngIf="f['email'].errors['required']">Email is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Alternative Email</label>
+                        <input class="form-control" type="text" formControlName="altemail" [ngClass]="{'is-invalid': submitted && f['altemail'].errors }">
+                        <div *ngIf="submitted && f['altemail'].errors" class="invalid-feedback">
+                            <div *ngIf="f['altemail'].errors['required']">Alternative email is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Strength</label>
+                        <input class="form-control" type="text" formControlName="strength" [ngClass]="{'is-invalid': submitted && f['strength'].errors }">
+                        <div *ngIf="submitted && f['strength'].errors" class="invalid-feedback">
+                            <div *ngIf="f['strength'].errors['required']">Basic Salary is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Weakness</label>
+                        <input class="form-control" type="text" formControlName="weakness" [ngClass]="{'is-invalid': submitted && f['weakness'].errors }">
+                        <div *ngIf="submitted && f['weakness'].errors" class="invalid-feedback">
+                            <div *ngIf="f['weakness'].errors['required']">Basic Salary is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="mt-5"><h6>Educational Qualification</h6></div>
+
+
+            
+            <div class="row">
+                <div class="col-md-2">
+                    <div>
+                        <label class="my-5" for="">School</label>
+                        <!-- <input class="" class="form-control" type="text" formControlName="educationtype" [ngClass]="{'is-invalid': submitted && f['educationtype'].errors }">
+                        <div *ngIf="submitted && f['educationtype'].errors" class="invalid-feedback">
+                            <div *ngIf="f['educationtype'].errors['required']">Education type is required
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div>
+                        <label class="py-2" for="">Institute Name</label>
+                        <input class="form-control" type="text" formControlName="schoolname" [ngClass]="{'is-invalid': submitted && f['schoolname'].errors }">
+                        <div *ngIf="submitted && f['schoolname'].errors" class="invalid-feedback">
+                            <div *ngIf="f['schoolname'].errors['required']">alternative Email is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <label class="py-2" for="">Group</label>
+                        <input class="form-control" type="text" formControlName="schoolgroup" [ngClass]="{'is-invalid': submitted && f['schoolgroup'].errors }">
+                        <div *ngIf="submitted && f['schoolgroup'].errors" class="invalid-feedback">
+                            <div *ngIf="f['schoolgroup'].errors['required']">Group is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Year Of Passed</label>
+                        <input class="form-control" type="text" formControlName="schoolyearpassed" [ngClass]="{'is-invalid': submitted && f['schoolyearpassed'].errors }">
+                        <div *ngIf="submitted && f['schoolyearpassed'].errors" class="invalid-feedback">
+                            <div *ngIf="f['schoolyearpassed'].errors['required']">Year of passed is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">grade</label>
+                        <input class="form-control" type="text" formControlName="schoolgrade" [ngClass]="{'is-invalid': submitted && f['schoolgrade'].errors }">
+                        <div *ngIf="submitted && f['schoolgrade'].errors" class="invalid-feedback">
+                            <div *ngIf="f['schoolgrade'].errors['required']">Alternative email is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- //Inter -->
+            <div class="row">
+                <div class="col-md-2">
+                    <div>
+                        <label class="my-5" for="">Intermidate / Diploma</label>
+                        <!-- <input class="" class="form-control" type="text" formControlName="educationtype" [ngClass]="{'is-invalid': submitted && f['educationtype'].errors }">
+                        <div *ngIf="submitted && f['educationtype'].errors" class="invalid-feedback">
+                            <div *ngIf="f['educationtype'].errors['required']">Education type is required
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div>
+                        <label class="py-2" for="">Institute Name</label>
+                        <input class="form-control" type="text" formControlName="intermediatename" [ngClass]="{'is-invalid': submitted && f['intermediatename'].errors }">
+                        <div *ngIf="submitted && f['intermediatename'].errors" class="invalid-feedback">
+                            <div *ngIf="f['intermediatename'].errors['required']">alternative Email is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <label class="py-2" for="">Group</label>
+                        <input class="form-control" type="text" formControlName="intergroup" [ngClass]="{'is-invalid': submitted && f['intergroup'].errors }">
+                        <div *ngIf="submitted && f['intergroup'].errors" class="invalid-feedback">
+                            <div *ngIf="f['intergroup'].errors['required']">Group is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Year Of Passed</label>
+                        <input class="form-control" type="text" formControlName="interyearpassed" [ngClass]="{'is-invalid': submitted && f['interyearpassed'].errors }">
+                        <div *ngIf="submitted && f['interyearpassed'].errors" class="invalid-feedback">
+                            <div *ngIf="f['interyearpassed'].errors['required']">Year of passed is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Grade</label>
+                        <input class="form-control" type="text" formControlName="intergrade" [ngClass]="{'is-invalid': submitted && f['intergrade'].errors }">
+                        <div *ngIf="submitted && f['intergrade'].errors" class="invalid-feedback">
+                            <div *ngIf="f['intergrade'].errors['required']">Alternative email is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-md-2">
+                    <div>
+                        <label class="my-5" for="">Graduation</label>
+                        <!-- <input class="" class="form-control" type="text" formControlName="educationtype" [ngClass]="{'is-invalid': submitted && f['educationtype'].errors }">
+                        <div *ngIf="submitted && f['educationtype'].errors" class="invalid-feedback">
+                            <div *ngIf="f['educationtype'].errors['required']">Education type is required
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div>
+                        <label class="py-2" for="">Institute Name</label>
+                        <input class="form-control" type="text" formControlName="graduationname" [ngClass]="{'is-invalid': submitted && f['graduationname'].errors }">
+                        <div *ngIf="submitted && f['graduationname'].errors" class="invalid-feedback">
+                            <div *ngIf="f['graduationname'].errors['required']">Graduationname Email is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <label class="py-2" for="">Group</label>
+                        <input class="form-control" type="text" formControlName="graduationgroup" [ngClass]="{'is-invalid': submitted && f['graduationgroup'].errors }">
+                        <div *ngIf="submitted && f['graduationgroup'].errors" class="invalid-feedback">
+                            <div *ngIf="f['graduationgroup'].errors['required']">Group is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Year Of Passed</label>
+                        <input class="form-control" type="text" formControlName="graduationyearpassed" [ngClass]="{'is-invalid': submitted && f['graduationyearpassed'].errors }">
+                        <div *ngIf="submitted && f['graduationyearpassed'].errors" class="invalid-feedback">
+                            <div *ngIf="f['graduationyearpassed'].errors['required']">Year of passed is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">grade</label>
+                        <input class="form-control" type="text" formControlName="graduationgrade" [ngClass]="{'is-invalid': submitted && f['graduationgrade'].errors }">
+                        <div *ngIf="submitted && f['graduationgrade'].errors" class="invalid-feedback">
+                            <div *ngIf="f['graduationgrade'].errors['required']">Alternative email is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-md-2">
+                    <div>
+                        <label class="my-5" for="">PG </label>
+                        <!-- <input class="" class="form-control" type="text" formControlName="educationtype" [ngClass]="{'is-invalid': submitted && f['educationtype'].errors }">
+                        <div *ngIf="submitted && f['educationtype'].errors" class="invalid-feedback">
+                            <div *ngIf="f['educationtype'].errors['required']">Education type is required
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div>
+                        <label class="py-2" for="">Institute Name</label>
+                        <input class="form-control" type="text" formControlName="pgname" [ngClass]="{'is-invalid': submitted && f['pgname'].errors }">
+                        <div *ngIf="submitted && f['pgname'].errors" class="invalid-feedback">
+                            <div *ngIf="f['pgname'].errors['required']">alternative Email is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <label class="py-2" for="">Group</label>
+                        <input class="form-control" type="text" formControlName="pggroup" [ngClass]="{'is-invalid': submitted && f['pggroup'].errors }">
+                        <div *ngIf="submitted && f['pggroup'].errors" class="invalid-feedback">
+                            <div *ngIf="f['pggroup'].errors['required']">Group is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Year Of Passed</label>
+                        <input class="form-control" type="text" formControlName="pgyearpassed" [ngClass]="{'is-invalid': submitted && f['pgyearpassed'].errors }">
+                        <div *ngIf="submitted && f['pgyearpassed'].errors" class="invalid-feedback">
+                            <div *ngIf="f['pgyearpassed'].errors['required']">Year of passed is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">grade</label>
+                        <input class="form-control" type="text" formControlName="pggrade" [ngClass]="{'is-invalid': submitted && f['pggrade'].errors }">
+                        <div *ngIf="submitted && f['pggrade'].errors" class="invalid-feedback">
+                            <div *ngIf="f['pggrade'].errors['required']">Alternative email is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-2">
+                    <div>
+                        <label class="my-5" for="">Further Plans</label>
+                        <!-- <input class="" class="form-control" type="text" formControlName="educationtype" [ngClass]="{'is-invalid': submitted && f['educationtype'].errors }">
+                        <div *ngIf="submitted && f['educationtype'].errors" class="invalid-feedback">
+                            <div *ngIf="f['educationtype'].errors['required']">Education type is required
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div>
+                        <label class="py-2" for="">Institute Name</label>
+                        <input class="form-control" type="text" formControlName="institutename" [ngClass]="{'is-invalid': submitted && f['institutename'].errors }">
+                        <div *ngIf="submitted && f['institutename'].errors" class="invalid-feedback">
+                            <div *ngIf="f['institutename'].errors['required']">alternative Email is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <label class="py-2" for="">Group</label>
+                        <input class="form-control" type="text" formControlName="group" [ngClass]="{'is-invalid': submitted && f['group'].errors }">
+                        <div *ngIf="submitted && f['group'].errors" class="invalid-feedback">
+                            <div *ngIf="f['group'].errors['required']">Group is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">Year Of Passed</label>
+                        <input class="form-control" type="text" formControlName="yearpassed" [ngClass]="{'is-invalid': submitted && f['yearpassed'].errors }">
+                        <div *ngIf="submitted && f['yearpassed'].errors" class="invalid-feedback">
+                            <div *ngIf="f['yearpassed'].errors['required']">Year of passed is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div>
+                        <label class="py-2" for="">grade</label>
+                        <input class="form-control" type="text" formControlName="grade" [ngClass]="{'is-invalid': submitted && f['grade'].errors }">
+                        <div *ngIf="submitted && f['grade'].errors" class="invalid-feedback">
+                            <div *ngIf="f['grade'].errors['required']">Alternative email is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="mt-3">
+                    <h6>Reference</h6>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label class="py-2" for="">Name</label>
+                        <input class="form-control" type="text" formControlName="name" [ngClass]="{'is-invalid': submitted && f['name'].errors }">
+                        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                            <div *ngIf="f['name'].errors['required']">Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">ref_designation</label>
+                        <input class="form-control" type="text" formControlName="ref_designation" [ngClass]="{'is-invalid': submitted && f['ref_designation'].errors }">
+                        <div *ngIf="submitted && f['ref_designation'].errors" class="invalid-feedback">
+                            <div *ngIf="f['ref_designation'].errors['required']">ref_designation is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Company Name</label>
+                        <input class="form-control" type="text" formControlName="companyname" [ngClass]="{'is-invalid': submitted && f['companyname'].errors }">
+                        <div *ngIf="submitted && f['companyname'].errors" class="invalid-feedback">
+                            <div *ngIf="f['companyname'].errors['required']">Company Name is required
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label class="py-2" for="">Address</label>
+                        <input class="form-control" type="text" formControlName="address" [ngClass]="{'is-invalid': submitted && f['address'].errors }">
+                        <div *ngIf="submitted && f['address'].errors" class="invalid-feedback">
+                            <div *ngIf="f['address'].errors['required']">Address is required
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="py-2" for="">Contact Number</label>
+                        <input class="form-control" type="text" formControlName="contactnumber" [ngClass]="{'is-invalid': submitted && f['contactnumber'].errors }">
+                        <div *ngIf="submitted && f['contactnumber'].errors" class="invalid-feedback">
+                            <div *ngIf="f['contactnumber'].errors['required']">Contact Number is required
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="mt-5 mb-5">
+                <button class="btn bg-theme text-light w-50">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>

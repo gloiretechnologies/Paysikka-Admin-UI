@@ -1,0 +1,113 @@
+.nav-tabs .nav-link {
+    width: 10%;
+    text-align: center;
+    padding: 1px !important;
+    color: #202A44;
+    isolation: isolate;
+    border-color: #c8c5c5;
+    border-radius: 0px;
+    border-bottom: none;
+}
+.nav-link{
+    font-size: 14px;
+}
+// .nav-link .active{
+//     
+// }
+.nav-tabs .active{
+    background-color: #202A44;
+    color: white;
+}
+
+.relation-cards{
+    background-color: #202A44;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.pdf-download{
+    background-color: rgb(162, 47, 47);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    padding: 6px 15px;
+}
+
+// Removing inc/dec btns for Inputs
+
+input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+.row{
+    margin: 0px;
+    padding: 0px;
+}
+.empImg{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+::ng-deep .modal-backdrop {
+    width: 0px !important;
+
+}
+.popupImg{
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+}
+.modal-header{
+    border-bottom: none !important;
+}
+
+
+
+
+///// 
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    margin-top: 0 !important;
+}
+.styled-table thead tr {
+    background-color: #202A44;
+    color: #ffffff;
+    text-align: center;
+   
+}
+.styled-table thead th{
+    background-color:#202A44 ;
+    color: white;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    border:1px solid black !important;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #202A44;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}

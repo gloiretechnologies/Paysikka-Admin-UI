@@ -1,0 +1,80 @@
+
+<section>
+    <div class="card my-2 mx-2 py-2 px-2 bg-theme text-light">
+        <div class="row">
+            <!-- <div class="col-md-6">
+                <form [formGroup]="frmDateform" (ngSubmit)="filtreData()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <table>
+                                <tr>
+                                    <td>From Date</td>
+                                    <td>&nbsp;:&nbsp;</td>
+                                    <td><input  type="date" formControlName="fromdate" class="form-control startDate"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table>
+                                <tr>
+                                    <td>To Date</td>
+                                    <td>&nbsp;:&nbsp;</td>
+                                    <td><input (change)="dateFilter()" type="date" formControlName="todate" class="form-control startDate" ></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div> -->
+            <div class="col-md-6">
+                <div class="table-search">
+                    <input class=" w-75 form-control" type="text" [(ngModel)]="searchText" placeholder="Search any field"/>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 w-100 mb-5 title-block" >
+               <!-- -------------------MyTable-------------------- -->
+                  <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th width="10%">S.No</th>
+                            <th>EMP ID</th>
+                            <th>Name</th>
+                            <th>Designation</th>
+                            <th>Department</th>
+                            <th>Mobile Number</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr  *ngFor="let data of allEmpData | search:searchText | paginate: { itemsPerPage: 15,currentPage: q } let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{data.employee_id}}</td>
+                            <td><span >{{data.firstname}}</span>&nbsp;<span>{{data.lastname}}</span></td>
+                            <td>{{data.jobrole}}</td>
+                            <td>{{data.department}}</td>
+                            <td>{{data.phone}}</td>
+                            <td><span class="view-more" routerLink="/employees/update-employee-details/{{data.employee_id}}"><i class="fa-solid fa-eye"></i> View More</span> 
+                                <!-- <span class="edit"><i class="fa-solid fa-pen-to-square"></i></span> -->
+                                <span class="delete" (click)="deleteEmployee(data.employee_id)" ><i class="fa-solid fa-trash"></i></span></td>
+                            <!-- <td> <span class="edit" routerLink="/hiring/edit-job-post/{{data.uniqueid}}"><i class="fa-solid fa-pen-to-square"></i></span>
+                                <span class="delete" (click)="deleteRequirement(data.uniqueid)"><i class="fa-solid fa-trash"></i></span></td> -->
+                        </tr>
+                       
+                        <!-- and so on... -->
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="q = $event" *ngIf="!serverIssue"></pagination-controls>
+            </div>
+        </div>
+        <app-server-issue *ngIf="serverIssue"></app-server-issue>
+    </div>
+</section>
+

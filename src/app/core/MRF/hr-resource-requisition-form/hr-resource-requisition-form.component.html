@@ -1,0 +1,646 @@
+<section>
+  <div class="container">
+
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-md-12 w-100 my-3 title-block">
+          <!-- -------------------MyTable-------------------- -->
+          <table class="styled-table ">
+            <thead>
+              <tr class="text-center">
+                <th width="10%">S.No</th>
+                <th>Department</th>
+                <th>No of Vacancies</th>
+                <th>Submitted Whom</th>
+                <th>Designation</th>
+                <th>Action</th>
+                <th>stages</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr *ngFor="let data of mydata let i=index">
+                <td>{{i+1}}</td>
+                <td>{{data.department
+                  }}</td>
+                <td>{{data.no_of_vacancies
+
+                  }}</td>
+                <td>{{data.approved_name}}</td>
+                <td>{{data.designation
+                  }}</td>
+                <td><!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" (click)="myGetdata(data.mrf_id)" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                    View More
+                  </button>
+                </td>
+                <td>
+                  <form action="/action_page.php ">
+                    <select name="cars" id="cars">
+                      <option value="volvo">--select--</option>
+                      <option value="addedjob">Added Job</option>
+                      <option value="pending">Pending</option>
+
+                    </select>
+
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <app-server-issue *ngIf="serverIssue"></app-server-issue>
+
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+   <!-- Modal -->
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+   aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title text-center" id="exampleModalLabel">RESOURCE
+           REQUISITION FORM</h5>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       </div>
+       <div class="modal-body">
+         <section class="my-5">
+           <div class="main">
+             <div class="container">
+               <div class="row border-bottom border-dark pb-3">
+                 <div class="text-center my-3">
+                   <h5>RESOURCE REQUISITION FORM</h5>
+                 </div>
+                 <div class="col-md-6 main-col">
+                   <div class="row child-row">
+                     <div class="col-md-4">
+                       <div>DEPARTMENT</div>
+
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7">
+                       <div>
+                         <select readonly formControlName="department" class="w-100 form-control">
+                           <option value="">
+                             --select--</option>
+                           <option value="it">IT</option>
+                           <option value="hr">HR</option>
+                         </select>
+
+                       </div>
+                     </div>
+
+                   </div>
+                   <div class="row my-2 child-row">
+                     <div class="col-md-4">
+                       <div>BRANCH</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7">
+                       <div>
+                         <select readonly class="w-100 form-control" formControlName="branch">
+                           <option value="">
+                             --select--</option>
+                           <option value="prakashnagar">
+                             Prakash nagar</option>
+                           <option value="himayathnagar">
+                             Himayathnagar</option>
+                         </select>
+
+                       </div>
+                     </div>
+
+                   </div>
+                   <div class="row child-row">
+                     <div class="col-md-4 ">
+                       <div>REQUIRED BY</div>
+                       <div class="specify_text">(specify the
+                         Week/Month)</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7">
+                       <div>
+                         <input class="w-100 form-control" type="text" formControlName="required_by"
+                           readonly>
+
+                       </div>
+
+                     </div>
+
+                   </div>
+                 </div>
+                 <div class="col-md-6 main-col">
+                   <div class="row child-row">
+                     <div class="col-md-4">
+                       <div>NEW/REPLACEMENT</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7">
+                       <div>
+                         <select readonly class="w-100 form-control" formControlName="new_replacement">
+                           <option value="">
+                             --select--</option>
+                           <option value="new">New</option>
+                           <option value="replacement">
+                             Replacement</option>
+                         </select>
+
+
+                       </div>
+                     </div>
+
+                   </div>
+                   <div class="row my-2 child-row">
+                     <div class="col-md-4">
+                       <div>DESIGNATION</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7">
+                       <div>
+                         <input class="w-100 form-control" type="text" formControlName="designation"
+                           readonly>
+
+                       </div>
+                     </div>
+
+                   </div>
+                   <div class="row child-row">
+                     <div class="col-md-4">
+                       <div>NO. OF VACANCIES</div>
+
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7">
+                       <div>
+                         <input class="w-100 form-control" type="text"
+                           formControlName="no_of_vacancies" readonly>
+
+                       </div>
+                     </div>
+
+                   </div>
+                 </div>
+               </div>
+               <div class="row border-bottom border-dark pb-3">
+                 <div class="h6-head">
+                   <h6 class="fst-italic">DEPLOYEMENT</h6>
+                 </div>
+                 <div class="deploynent-block">
+                   <!-- <div class="row child-row">
+                                                         <div class="col-md-4">
+                                                         <div>PLACE OF WORK</div>
+                                                         </div>
+                                                         <div class="col-md-1 text-end">
+                                                         <div>:</div>
+                                                         </div>
+                                                         <div class="col-md-7">
+                                                         <input class="w-100 form-control"
+                                                         type="text">
+                                                         </div>
+
+                                                       </div>
+                                                       <div class="row my-2 child-row">
+                                                         <div class="col-md-4">
+                                                         <div>REPORTING TO</div>
+                                                         </div>
+                                                         <div class="col-md-1 text-end">
+                                                         <div>:</div>
+                                                         </div>
+                                                         <div class="col-md-7">
+                                                         <input class="w-100 form-control"
+                                                         type="text">
+                                                         </div>
+
+                                                       </div> -->
+                   <div class="row my-2 child-row">
+                     <div class="col-md-4">
+                       <div>JOB DESCRIPTION</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7">
+                       <!-- <textarea class="w-100 form-control" name="" id="" rows="5"></textarea> -->
+
+                     </div>
+                     <div class="col-md-12">
+                       <div class="form-group">
+                         <div class="content">
+                           <div class="NgxEditor__Wrapper">
+                             <ngx-editor-menu [editor]="editor">
+                             </ngx-editor-menu>
+                             <ngx-editor [editor]="editor" type="text" cols="20" rows="8"
+                               class="form-control h6-head" [innerHTML]="editorText"
+                               formControlName="job_description" readonly>
+
+                             </ngx-editor>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+
+
+                   </div>
+
+                 </div>
+               </div>
+               <div class="row border-bottom border-dark pb-3">
+                 <div class="h6-head">
+                   <h6 class="fst-italic">REQUIREMENT PROFILE</h6>
+                 </div>
+                 <div class="deploynent-block">
+                   <div class="row child-row">
+                     <div class="col-md-4">
+                       <div>QUALIFICATION</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7">
+                       <div>
+                         <input class="w-100 form-control" type="text" formControlName="qualification"
+                           readonly />
+
+                       </div>
+
+                     </div>
+
+                   </div>
+                   <div class="row my-2 child-row">
+                     <div class="col-md-4">
+                       <div>EXPERIENCE</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7">
+                       <div>
+                         <input class="w-100 form-control" type="text" formControlName="experiance"
+                           readonly>
+
+                       </div>
+                     </div>
+
+                   </div>
+                   <div class="row my-2 child-row">
+                     <div class="col-md-4">
+                       <div>SKILL SETS</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7">
+                       <textarea class="w-100 form-control" name="" id="" rows="5"
+                         formControlName="skills" readonly></textarea>
+
+                     </div>
+
+                   </div>
+                   <div class="row my-2 child-row">
+                     <div class="col-md-4">
+                       <div>ANY OTHER REQUIREMENTS</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7">
+                       <textarea class="w-100 form-control" rows="3"
+                         formControlName="other_requirements" readonly></textarea>
+
+                     </div>
+
+                   </div>
+
+
+                 </div>
+               </div>
+               <div class="row border-bottom border-dark pb-3">
+                 <div class="h6-head">
+                   <h6 class="fst-italic">JUSTIFICATION</h6>
+                 </div>
+                 <div class="deploynent-block">
+                   <div class="row">
+                     <div class="col-md-12">
+                       <textarea class="w-100 form-control" placeholder="Text here..." name="" id=""
+                         cols="30" rows="10" formControlName="justification" readonly></textarea>
+
+                     </div>
+
+                   </div>
+                 </div>
+                 <div class="row my-2">
+                   <div class="col-md-7">
+
+                   </div>
+                   <!-- <div class="col-md-5 text-center">
+                                                         <img class="sig-img"
+                                                         src="https://tse1.mm.bing.net/th?id=OIP.Q22DRBYTA7HBu6z1F3-YpAHaE1&pid=Api&rs=1&c=1&qlt=95&w=139&h=91"
+                                                         alt="">
+
+                                                       </div> -->
+
+                 </div>
+                 <div class="row mt-4">
+                   <div class="col-md-7">
+                     <div class="row">
+                       <div class="col-md-2">
+                         <h6>Date</h6>
+                       </div>
+                       <div class="col-md-6">
+                         <div>
+                           <input type="date" class="form-control"
+                             formControlName="request_recieved_date" readonly>
+
+                         </div>
+                       </div>
+
+
+                     </div>
+                   </div>
+                   <div class="col-md-5 text-center">
+                     <div class="text-center">
+                       <h6>FUNCTIONAL HEAD:</h6>
+                     </div>
+                     <input type="text" class="form-control" formControlName="functional_head"
+                       readonly>
+
+                   </div>
+                   <!-- <a class="text-end" href="">upload signature</a> -->
+
+                 </div>
+               </div>
+               <div class="row border-bottom border-dark pb-3">
+                 <div class="h6-head">
+                   <h6 class="fst-italic">SANCTIONAED/NOT
+                     SANCTIONED</h6>
+                 </div>
+                 <div class="">
+                   <div class="row child-row">
+                     <div class="col-md-2">
+                       <div>REMARKS</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7">
+                       <textarea class="w-100 form-control" rows="10" placeholder="Type here...."
+                         formControlName="manager_remarks"
+                         [ngClass]="{ 'is-invalid': submitted && f['manager_remarks'].errors }"
+                         readonly></textarea>
+                       <div *ngIf="submitted && f['manager_remarks'].errors" class="invalid-feedback">
+                         <div *ngIf="f['manager_remarks'].errors['required']">
+                           Date is required</div>
+                         <div *ngIf="f['manager_remarks'].errors['manager_remarks']">
+                           Branch is invalid</div>
+                       </div>
+                     </div>
+
+                   </div>
+                   <div class="row my-2 child-row">
+                     <div class="col-md-2">
+                       <div>APPROVER NAME</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7 form-group">
+                       <input class="w-100 form-control" type="text" formControlName="approved_name"
+                         [ngClass]="{ 'is-invalid': submitted && f['approved_name'].errors }" readonly>
+                       <div *ngIf="submitted && f['approved_name'].errors" class="invalid-feedback">
+                         <div *ngIf="f['approved_name'].errors['required']">
+                           Date is required</div>
+                         <div *ngIf="f['approved_name'].errors['approved_name']">
+                           Branch is invalid</div>
+                       </div>
+                     </div>
+
+                   </div>
+                   <div class="row my-2 child-row">
+                     <div class="col-md-1">
+                       <div>Date</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-4">
+                       <div>
+                         <input type="date" class="form-control" formControlName="approved_date"
+                           [ngClass]="{ 'is-invalid': submitted && f['approved_date'].errors }"
+                           readonly>
+                         <div *ngIf="submitted && f['approved_date'].errors" class="invalid-feedback">
+                           <div *ngIf="f['approved_date'].errors['required']">
+                             Date is required</div>
+                           <div *ngIf="f['approved_date'].errors['approved_date']">
+                             Branch is invalid</div>
+                         </div>
+                       </div>
+                     </div>
+                     <div class="col-md-1">
+                       <div>Status</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-4">
+                       <div>
+                         <select readonly formControlName="status" class="w-100 form-control my-select"
+                           [ngClass]="{ 'is-invalid': submitted && f['status'].errors }">
+
+                           <option value="">
+                             --select-- </option>
+                           <option value="approved">
+                             Approved</option>
+                           <option value="rejected">
+                             Rejected</option>
+                         </select>
+                         <div *ngIf="submitted && f['status'].errors" class="invalid-feedback">
+                           <div *ngIf="f['status'].errors['required']">
+                             Status is required</div>
+                           <div *ngIf="f['status'].errors['status']">
+                             Status is invalid</div>
+                         </div>
+                       </div>
+                     </div>
+
+                   </div>
+
+                 </div>
+               </div>
+               <div class="row  pb-3">
+                 <div class="h6-head">
+                   <h6 class="fst-italic">TO BE FILLED BY THE
+                     HIRING MANAGER</h6>
+                   <div>(If Replacement)</div>
+                 </div>
+                 <div class="deploynent-blocks">
+                   <div class="row child-row">
+                     <div class="col-md-4 ">
+                       <div>Name of the leaving employee</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7 form-group">
+                       <input class="w-100 form-control" type="text" formControlName="leaving_ename"
+                         [ngClass]="{ 'is-invalid': submitted && f['leaving_ename'].errors }">
+                       <div *ngIf="submitted && f['leaving_ename'].errors" class="invalid-feedback">
+                         <div *ngIf="f['leaving_ename'].errors['required']">
+                           leaving_ename is required</div>
+                         <div *ngIf="f['leaving_ename'].errors['leaving_ename']">
+                           leaving_ename is invalid</div>
+                       </div>
+
+                     </div>
+
+                   </div>
+                   <div class="row my-2 child-row">
+                     <div class="col-md-4">
+                       <div></div>Date of leaving
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7 form-group">
+                       <input class="w-100 form-control" type="date" formControlName="date_leaving"
+                         [ngClass]="{ 'is-invalid': submitted && f['date_leaving'].errors }">
+                       <div *ngIf="submitted && f['date_leaving'].errors" class="invalid-feedback">
+                         <div *ngIf="f['date_leaving'].errors['required']">
+                           date_leaving is required</div>
+                         <div *ngIf="f['date_leaving'].errors['date_leaving']">
+                           date_leaving is invalid</div>
+                       </div>
+
+                     </div>
+
+                   </div>
+                   <!-- <div class="row my-2 child-row">
+                                                         <div class="col-md-4">
+                                                         <div></div>Reason for Leaving
+                                                         </div>
+                                                         <div class="col-md-1 text-end">
+                                                         <div>:</div>
+                                                         </div>
+                                                         <div class="col-md-7 form-group">
+                                                         <input class="w-100 form-control"
+                                                         type="text" formControlName="status" [ngClass]="{ 'is-invalid': submitted && f['status'].errors }">
+                                                         <div *ngIf="submitted && f['status'].errors"
+                                                         class="invalid-feedback">
+                                                         <div
+                                                         *ngIf="f['status'].errors['required']">
+                                                         Name is required</div>
+                                                         <div
+                                                         *ngIf="f['status'].errors['status']">
+                                                         Branch is invalid</div>
+                                                         </div>
+                                                         </div>
+
+                                                       </div> -->
+                   <div class="row my-2 child-row">
+                     <div class="col-md-4">
+                       <div>Present Dept.strength in the
+                         category</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7 form-group">
+                       <input class="w-100 form-control" type="text" formControlName="dept_strenght"
+                         [ngClass]="{ 'is-invalid': submitted && f['dept_strenght'].errors }">
+                       <div *ngIf="submitted && f['dept_strenght'].errors" class="invalid-feedback">
+                         <div *ngIf="f['dept_strenght'].errors['required']">
+                           dept_strenght is required</div>
+                         <div *ngIf="f['dept_strenght'].errors['dept_strenght']">
+                           dept_strenght is invalid</div>
+                       </div>
+                     </div>
+
+                   </div>
+                   <div class="row my-2 child-row">
+                     <div class="col-md-4">
+                       <div>Stength of the Function</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7 form-group">
+                       <input class="w-100 form-control" type="text"
+                         formControlName="strenght_function"
+                         [ngClass]="{ 'is-invalid': submitted && f['strenght_function'].errors }">
+
+
+                       <div *ngIf="submitted && f['strenght_function'].errors"
+                         class="invalid-feedback">
+                         <div *ngIf="f['strenght_function'].errors['required']">
+                           strenght_function is required
+                         </div>
+                         <div *ngIf="f['strenght_function'].errors['strenght_function']">
+                           strenght_function is invalid
+                         </div>
+                       </div>
+
+                     </div>
+
+                   </div>
+                   <div class="row my-2 child-row">
+                     <div class="col-md-4">
+                       <div>Remarks</div>
+                     </div>
+                     <div class="col-md-1 text-end">
+                       <div>:</div>
+                     </div>
+                     <div class="col-md-7 form-group">
+                       <input class="w-100 form-control" type="text" formControlName="remarks"
+                         [ngClass]="{ 'is-invalid': submitted && f['remarks'].errors }">
+                       <div *ngIf="submitted && f['remarks'].errors" class="invalid-feedback">
+                         <div *ngIf="f['remarks'].errors['required']">
+                           Remarks is required</div>
+                         <div *ngIf="f['remarks'].errors['remarks ']">
+                           Remarks is invalid</div>
+                       </div>
+
+                     </div>
+
+                   </div>
+
+
+                 </div>
+               </div>
+
+               <div class="my-para">
+                 <p>*job description should clearly indicate
+                   funcional responsibility. In the case of
+                   Managers ,relevant organisation <br>chart should
+                   be enclosed.</p>
+               </div>
+               <div class="my-3">
+                 <button class="btn btn-primary" (click)="onSubmit()">Save</button>&nbsp;&nbsp;
+                 <button class="btn btn-danger" [routerLink]="['/hiring/jobpost']"
+                   routerLinkActive="router-link-active">Add
+                   Job</button>
+               </div>
+             </div>
+
+
+           </div>
+         </section>
+       </div>
+
+     </div>
+   </div>
+ </div>
+</section>

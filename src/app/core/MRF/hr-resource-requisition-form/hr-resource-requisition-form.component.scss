@@ -1,0 +1,178 @@
+.title {
+    font-size: 16px;
+
+}
+
+// .title-block {
+
+//     padding: 10px 10px !important;
+
+//     // background: rgba(9, 57, 179, 0.46);
+//     // box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+//     backdrop-filter: blur(5px);
+//     -webkit-backdrop-filter: blur(5px);
+
+// }
+
+.edit i {
+    color: #202A44;
+    font-size: 16px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+}
+
+.delete i {
+    color: #e63946;
+    font-size: 16px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+}
+.view-more{
+    background: #202A44;
+    font-size: 10px;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+
+}
+
+.card {
+    /* From https://css.glass */
+
+}
+
+// ---------------My Table----------
+.styled-table {
+    // border-collapse: collapse;
+    // border: 1px solid;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    margin-top: 0 !important;
+}
+
+.styled-table thead tr {
+    background-color: #202A44;
+    color: #ffffff;
+    text-align: left;
+    // border: 1px solid;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    border: 1px solid #000;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #202A44;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+::ng-deep .modal-backdrop {
+    width: 0px !important;
+
+}
+
+
+
+
+.main{
+    border: 2px solid black;
+    margin: 0px auto;
+}
+.specify_text{
+    font-size: 10px;
+}
+/* deploynent-block */
+.deploynent-block{
+    width: 62%;
+    margin: 0px auto;
+}
+.sig-img{
+    width: 100px;
+    height: 60px;
+}
+.deploynent-blocks{
+    width: 75%;
+    margin: 0px auto;
+}
+
+
+@media only screen and (max-width:480px){
+    .main{
+        width: 100%;
+        
+    }
+    .child-row .col-md-1{
+        display: none;
+    }
+    .deploynent-block{
+        width: 100%;
+    }
+    .deploynent-blocks{
+        width: 100%;
+    }
+}
+@media only screen and (max-width:768px){
+    .main{
+        width: 100%;
+        
+    }
+    .main-col{
+        width: 100%;
+    }
+    
+}
+@media only screen and (max-width:1024px){
+    .main{
+        width: 100%;
+       
+    }
+    .deploynent-block{
+        width: 100%;
+    }
+    .deploynent-blocks{
+        width: 100%;
+    }
+    
+}
+@media only screen and (min-width:481px) and (max-width:767px){
+    .child-row .col-md-1{
+        display: none;
+    }
+}
+.modal-dialog{
+    max-width: 100% !important;
+    color: black;
+    z-index: 999 !important;
+    margin-left: 18%;
+    
+}
+.h6-head{
+    text-align: start !important;
+}
+.my-para{
+    text-align: start !important;
+}
+.my-select {
+    
+    pointer-events: none;
+  }

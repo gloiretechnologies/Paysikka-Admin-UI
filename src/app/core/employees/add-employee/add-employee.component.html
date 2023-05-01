@@ -1,0 +1,114 @@
+<section>
+    <div class="row w-75 m-auto mt-5">
+        <div class="page-title text-center">
+            <h5>Add Employee here</h5>
+        </div>
+        <form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="py-2">First Name <span class="text-danger">*</span></label>
+                        <input type="text" formControlName="firstname" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['firstname'].errors }" />
+                        <div *ngIf="submitted && f['firstname'].errors" class="invalid-feedback">
+                            <div *ngIf="f['firstname'].errors['required']">First Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="py-2">Job Role <span class="text-danger">*</span></label>
+                        <input type="text" formControlName="jobrole" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['jobrole'].errors }" />
+                        <div *ngIf="submitted && f['jobrole'].errors" class="invalid-feedback">
+                            <div *ngIf="f['jobrole'].errors['required']">Job Role is required</div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label class="py-2">Company Name</label>
+                        <input type="text" formControlName="companyname" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['companyname'].errors }" />
+                        <div *ngIf="submitted && f['companyname'].errors" class="invalid-feedback">
+                            <div *ngIf="f['companyname'].errors['required']">Company Name is required</div>
+                        </div>
+                    </div> -->
+                    <div class="form-group">
+                        <label class="py-2">Mobile Number <span class="text-danger">*</span></label>
+                        <input type="text" formControlName="phone" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }" />
+                        <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+                            <div *ngIf="f['phone'].errors['required']">Mobile Number is required</div>
+                            <div *ngIf="f['phone'].errors['minlength']">Min 10 Digits required</div>
+                            <div *ngIf="f['phone'].errors['maxlength']">Valid 10 Digits only</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="py-2">Password <span class="text-danger">*</span></label>
+                        <input type="text" formControlName="password" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+                        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                            <div *ngIf="f['password'].errors['required']">Password is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="py-2" for="">Employee Photo <span class="text-danger my-4"> * Upload size must be Below 60kb</span></label>
+                        <input class="form-control" (change)="onFileChange($event)" type="file" [ngClass]="{ 'is-invalid': submitted && f['employeeimage'].errors }">
+                        <!-- <div *ngIf="submitted && f['employeeimage'].errors" class="invalid-feedback">
+                            <div *ngIf="f['employeeimage'].errors['required']">Image is required</div>
+                        </div> -->
+                    </div>
+                    
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="py-2">Last Name <span class="text-danger">*</span></label>
+                        <input type="text" formControlName="lastname" class="form-control"
+                            [ngClass]="{'is-invalid': submitted && f['lastname'].errors }" />
+                        <div *ngIf="submitted && f['lastname'].errors" class="invalid-feedback">
+                            <div *ngIf="f['lastname'].errors['required']">Last Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="py-2">Email <span class="text-danger">*</span></label>
+                        <input type="text" formControlName="email" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+                        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                            <div *ngIf="f['email'].errors['required']">Email is required</div>
+                            <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="py-2">Department <span class="text-danger">*</span></label>
+                        <input type="text" formControlName="department" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['department'].errors }" />
+                        <div *ngIf="submitted && f['department'].errors" class="invalid-feedback">
+                            <div *ngIf="f['department'].errors['required']">Department is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="py-2">Date Of Joining <span class="text-danger">*</span></label>
+                        <input type="date" formControlName="dateofjoining" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['dateofjoining'].errors }" />
+                        <div *ngIf="submitted && f['dateofjoining'].errors" class="invalid-feedback">
+                            <div *ngIf="f['dateofjoining'].errors['required']">Date Of Joining is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="py-2">Date Of Birth <span class="text-danger">*</span></label>
+                        <input type="date" formControlName="dateofbirth" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['dateofbirth'].errors }" />
+                        <div *ngIf="submitted && f['dateofbirth'].errors" class="invalid-feedback">
+                            <div *ngIf="f['dateofbirth'].errors['required']">Date Of Joining is required</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group my-5 w-50">
+                <button type="submit" class="btn bg-theme text-light w-100">Submit</button>
+             
+            </div>
+        </form>
+    </div>
+</section>

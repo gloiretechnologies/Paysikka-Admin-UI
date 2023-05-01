@@ -1,0 +1,274 @@
+<!-- Table-2 -->
+
+<section>
+    <div class="card my-2 mx-2 py-2 px-2 bg-theme text-light">
+        <div class="row">
+            <div class="col-md-8">
+                <form [formGroup]="frmDateform" (ngSubmit)="filtreData()">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <table>
+                                <tr>
+                                    <td>From</td>
+                                    <td>&nbsp;:&nbsp;</td>
+                                    <td><input type="date" formControlName="fromdate" class="form-control my-2"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-3 m-auto">
+                            <table>
+                                <tr>
+                                    <td>To</td>
+                                    <td>&nbsp;:&nbsp;</td>
+                                    <td> <input type="date" formControlName="todate" class="form-control my-2"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-4 d-flex">
+                            <div class="py-2 px-1">
+                                <button type="submit" class="btn pdfButton" style="display: inline;">Apply Filter</button>
+                            </div>
+                            <div class="py-2 px-1">
+                                <button class="btn pdfButton" (click)="resetFilter()">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+           
+            <div class="col-md-4">
+                <div class="table-search">
+                    <input type="text" class="form-control search-field my-2" placeholder="What do you want search here....." [(ngModel)]="searchText">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section> 
+
+<!-- <div class="form-group row">
+
+    <div class="col-lg-6">
+        <form [formGroup]="frmDateform" (ngSubmit)="filtreData()">
+            <label for="fromdate" style="display: inline;">From : &nbsp;</label>
+            <input type="date" class="date" formControlName="fromdate" class="form-control startDate">&nbsp;
+            <label for="todate">To : </label>
+            <input type="date" class="date" formControlName="todate" class="form-control startDate">
+            &nbsp; &nbsp;<button type="submit" class="btn btn-sm filterButton" style="display: inline;">Apply
+                Filter</button>
+        </form>
+    </div>
+
+    <div class="col-lg-6">
+        <button type="button" (click)="resetFilter()" class="btn btn-sm filterButton" style="display: inline;">Reset
+            Filter</button>
+        &nbsp; &nbsp; <label for="ser">search:</label>&nbsp;
+        <input type="text" class="form-control search-field " placeholder="What do you want search here....."
+            [(ngModel)]="searchText" style="display: inline;width: 64%;height: 30px;">
+
+    </div>
+
+</div> -->
+<section>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12 w-100 my-5">
+                <!---------------------MyTable---------------------->
+                <table class="styled-table">
+                    <thead>
+                        <tr style="margin: 0;padding: 0;">
+                            <th>Sr.No</th>
+                            <th>Emp ID</th>
+                            <th>Name</th>
+                            <th>Desigination</th>
+                            <th>Department</th>
+                            <th>Log Date</th>
+                            <th>In-Time</th>
+                            <th>Out-Time</th>
+                            <th>Working</th>
+                            <!-- <th>Regularized Status</th> -->
+                            <th>Status</th>
+                            <th>Regulazation</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let data of logsData?.reverse() | paginate
+                    : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                      }| search:searchText ;let i = index">
+                        <tr [ngClass]="data == '' ? 'green' : 'red'" style="margin: 0;padding: 0;">
+                            <td>{{i+1}}</td>
+                            <td>{{data.employee_id}}</td>
+                            <td>{{data.fullname}}</td>
+                            <td>{{data.jobrole}}</td>
+                            <td>{{data.department}}</td>
+                            <td>{{data.logindate }}</td>
+                            <td><a class="inTime">{{data.logintime}}</a> </td>
+                            <td><a class="outTime">{{data.logouttime}}</a></td>
+                            <td>{{data.workinghours}}</td>
+                            <td>{{data.status}}</td>
+                            <!-- <td>{{data.regularizer_status}}</td> -->
+                            <td>
+
+                                <!-- <button  type="button"  [ngClass]="data.reg_status == true? 'Check1':'Check2'"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ' ? 'Check1' : 'Check2'" class="btn  btn-sm regularize Check1" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" (click)="updateData(data)">
+                                    <i class="fa-solid fa-pen-to-square" ></i> Regularize
+                                </button> -->
+                                <button type="button" [ngClass]="data.reg_status != 'false'? 'Check1':'Check2'"
+                                    class="btn  btn-sm regularize" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    (click)="updateData(data)">
+                                    <i class="fa-solid fa-pen-to-square"></i> Regularize
+                                </button>
+
+                                <!-- Modal -->
+
+
+
+
+                            </td>
+                            <!-- <th>{{data.employeelogdetails[0].note}}</th> -->
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="noData == true" class="text-center mt-5">
+                    <span class="text-center text-danger">No Data Found</span>
+                </div>
+                <app-server-issue *ngIf="serverIssue"></app-server-issue>
+                <div class="my-3" *ngIf="!serverIssue">
+                    <pagination-controls  previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)"
+                    *ngIf="noData == false" >
+                </pagination-controls>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Button trigger modal -->
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">#Regularize</h5>
+                <button type="button" class="btn-close btn-light" style="background-color:#fff" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body container">
+
+                <div class="card p-2 mb-2">
+
+                    <table>
+                        <tr>
+                            <td style="width:30%;">Employee ID</td>
+                            <th>: &nbsp;{{employee_ids}}</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                Name
+                            </td>
+                            <th>: &nbsp;{{fullnames}}</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                Designation
+                            </td>
+                            <th>: &nbsp;{{departments}}</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                Role
+                            </td>
+                            <th>: &nbsp;{{jobroles}}</th>
+                        </tr>
+                        <tr></tr>
+                    </table>
+                    <p>Note : &nbsp; <span>{{reg_notes}}</span></p>
+                </div>
+                <form class="mt-4" [formGroup]="regularizeForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="exampleInputEmail1" class="form-label"> <b>Presenty</b></label>
+                            <input type="hidden" formControlName="employee_id" class="form-control">
+                            <select class="form-select" formControlName="reg_status" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f['reg_status'].errors }">
+                                <option value="" selected>--Select--</option>
+                                <option value="Present">Present</option>
+                                <option value="Absent">Absent</option> 
+
+                            </select>
+                            <div *ngIf="f['reg_status'].errors" class="invalid-feedback">
+                                <div *ngIf="f['reg_status'].errors['required']">*Presenty required</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="exampleInputEmail1" class="form-label"> <b>Date</b></label>
+                            <input type="text" class="form-control" formControlName="logindate" readonly
+                                [ngClass]="{'is-invalid':submitted && f['logindate'].errors}" placeholder="Enter Date"
+                                id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <div *ngIf="f['logindate'].errors" class="invalid-feedback">
+                                <div *ngIf="f['logindate'].errors['required']">*Date Required</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row inout">
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="exampleInputEmail1" class="form-label"><b>In-Time </b></label>
+
+                            <input type="text" class="form-control" formControlName="logintime"
+                                placeholder=" hh:mm:ss:AM " id="exampleInputEmail1" aria-describedby="emailHelp"
+                                [ngClass]="{'is-invalid':submitted && f['logintime'].errors} ">
+                            <div *ngIf="f['logintime'].errors" class="invalid-feedback">
+                                <div *ngIf="f['logintime'].errors['required']">*Intime Required</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <label for="exampleInputPassword1" class="form-label"> <b>Out-Time</b></label>
+                            <!-- <input type="time" step="2" pattern="(0?[1-9]|1[012]):[0-5]\d\s?(a|p|A|P)[mM]"> -->
+
+                            <input type="text" class="form-control" formControlName="logouttime"
+                                placeholder=" hh:mm:ss:PM" id="exampleInputPassword1"
+                                [ngClass]="{'is-invalid':submitted && f['logouttime'].errors}">
+                            <div *ngIf="f['logouttime'].errors" class="invalid-feedback">
+                                <div *ngIf="f['logouttime'].errors['required']">*Outtime required</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <label for="exampleInputPassword1" class="form-label"> <b>Note</b></label>
+                            <textarea name="" id="" cols="10" placeholder="Give some notes...." rows="4" type="text"
+                                class="form-control" formControlName="reg_note" id="exampleInputPassword1"
+                                [ngClass]="{'is-invalid':submitted && f['reg_note'].errors}"></textarea>
+                            <div *ngIf="f['reg_note'].errors" class="invalid-feedback">
+                                <div *ngIf="f['reg_note'].errors['required']">*Note required</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal"
+                            (click)="reset()">Cancel</button>
+                        <button type="submit" class="btn btn-outline-success btn-sm"
+                            data-bs-dismiss="modal">Save</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- --------------------------free------------------------------ -->

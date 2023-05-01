@@ -1,0 +1,209 @@
+
+// ----------------My TAble--------------
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0px auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    margin-top: 0 !important;
+}
+
+.styled-table thead tr {
+    background-color: #202A44;
+    color: #fff;
+
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 5px;
+    border: 1px solid #665e5e;
+    text-align: center;
+
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+// .styled-table tbody tr:nth-of-type(even) {
+//     background-color: #f3f3f3;
+// }
+
+
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.my-5 {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.inTime {
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #a4f5ba;
+    color: #000;
+    text-decoration: none;
+}
+
+.outTime {
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #ed9da7;
+    color: #000;
+    text-decoration: none;
+}
+
+
+
+::ng-deep .modal-backdrop {
+    width: 0px !important;
+
+}
+
+.modal-content {
+    border: 2px solid #202A44;
+    background-color: #f0f0fa;
+}
+
+.form-group {
+    margin: 0 30px;
+    margin-top: 20px;
+    // top: 20px;
+}
+
+.regularize {
+    background-color: #202A44;
+    font-size: 0.8rem;
+    color: #FFF;
+    // font-weight: bold;
+}
+
+.modal-header {
+    background-color: #202A44;
+    color: #fff;
+    font-weight: bold;
+}
+
+.inout {
+    margin-top: 13px;
+}
+
+
+.Approved {
+    padding: 3px;
+    background-color: #16FF00;
+}
+
+.pending {
+    border: 1px solid #011;
+    padding: 3px;
+    background-color: #FFEA20;
+}
+
+.Rejected {
+    padding: 3px;
+    background-color: #E90064;
+}
+.date {
+    padding: 0 10px;
+    margin: 0 10px;
+}
+
+.startDate {
+    width: auto;
+    display: inline;
+    height: 30px;
+}
+.filterButton{
+background-color: #202A44;
+color: #fff;
+height: 30px;
+width: 90px;
+}
+.filterButton:hover{
+    background-color: #8791ac;
+}
+label{
+    font-weight: 700;
+    color: #202A44;
+}        
+// .noData {
+//     text-align: center;
+//     color: red;
+//     background-color: #202A44;
+//     margin: 25px auto;
+    
+//     min-width: 400px;
+//     // box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+//     box-shadow: 15px 15px 15px #CCCCCC;
+//     width: 95%;
+//     margin-top: 0 !important;
+// }       
+.Check1{
+    background-color: orange;
+    color: black;
+} 
+.Check2{
+    background-color: #202A44;
+    font-size: 0.8rem;
+    color: #FFF;
+}   
+
+
+// ----------------free---------------------------------------
+
+.pdfButton{
+    background-color:#e63946;
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+
+.table-search{
+  position: relative !important;
+  width: 100%;
+}
+.fa-magnifying-glass{
+    position: absolute !important;
+    top: 10px;
+    left: 85%;
+    font-size: 20px;
+    color: #202A44;
+}
+
+
